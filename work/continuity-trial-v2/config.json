@@ -1,0 +1,12 @@
+{
+  "db_path": "db/chat.sqlite",
+  "runs_dir": "runs",
+  "maint_state_dir": "state/maintenance",
+  "usage_file": "runs/api_usage.json",
+  "maint_cli": "../memory-maintenance-v1/review-v2/run_update_with_citation_alias.py",
+  "export_dir": null,
+  "retrieval_source_db": null,
+  "retrieval_manifest": null,
+  "user_id": "local-user",
+  "instance": "dreaming-local"
+}

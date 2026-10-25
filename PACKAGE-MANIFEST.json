@@ -1,0 +1,1440 @@
+{
+  "project": "Dreaming-backend",
+  "prepared_on": "2026-10-25",
+  "file_count_including_manifest": 287,
+  "note": "This manifest excludes itself. Source/docs provenance is recorded separately. Development edits naturally change hashes.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 446,
+      "sha256": "3470b5bffdb6d39440f1d549a4635dc26421af23b67f282d53a6e102ecf442f4"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 1547,
+      "sha256": "425439e592478aeb7d713a598092ae47169711b3b9e840d8d89ce93460ad239f"
+    },
+    {
+      "path": "PACKAGING.md",
+      "bytes": 3754,
+      "sha256": "6e4cb360f0958a68cadaea7a40f2fc7ea94adfb85ed8366679d380c924b4083d"
+    },
+    {
+      "path": "PROGRESS.md",
+      "bytes": 4437,
+      "sha256": "b84e360d8dad4c11abd566c9d52695093925824ac9e2e4b09388c8d9c3e31613"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4978,
+      "sha256": "9504c563f71a6168388bfaeb4b63894defc51db0a3565d1357bf229d63e581b6"
+    },
+    {
+      "path": "VERIFICATION.json",
+      "bytes": 2387,
+      "sha256": "0428941e7a20dacf0afffbf7d026a732b2d906304e87c9757722a1de2b531309"
+    },
+    {
+      "path": "docs/history/8788-主聊天Pro切换.md",
+      "bytes": 1161,
+      "sha256": "e9f814e6294543312ebbfca1f0df3aa1f94ff79192a6f835198be66a68c9838c"
+    },
+    {
+      "path": "docs/history/8788-工具调用泄漏修复.md",
+      "bytes": 1289,
+      "sha256": "3e0da2c79fa239e195fcb3e4bd5f49bd69f77c090681ccac0b3a240092e9b7a1"
+    },
+    {
+      "path": "docs/history/8788-新会话功能交付.md",
+      "bytes": 1187,
+      "sha256": "ad3a4e488f82b00bbafa15e398e1b4436e314a5b072e75d2591b97b55a9d22b0"
+    },
+    {
+      "path": "docs/history/8788-稳定记忆层实验与接入.md",
+      "bytes": 1332,
+      "sha256": "41dd398780f6c2e345322ee15f0ecf6eedc9a49e181f20ed0ecb43fb729a9e9f"
+    },
+    {
+      "path": "docs/history/8788-记忆使用提示词实验.md",
+      "bytes": 1254,
+      "sha256": "f3e1e64646e0f84df962f3025d874077bd468c8029d44e0cefaee0a5de0fad9f"
+    },
+    {
+      "path": "docs/history/Agent选型与iCloud方案调研.md",
+      "bytes": 1343,
+      "sha256": "ffe0fc70ada9f6f07a51fcfd70c3bdec078de78d01b1492aafb427fa58b0712b"
+    },
+    {
+      "path": "docs/history/Letta原生Demo-试用说明.md",
+      "bytes": 1139,
+      "sha256": "a758deee4275d7d8eeb6393c947a08fc5bc973e41c12faabaea48b054107324c"
+    },
+    {
+      "path": "docs/history/Letta原生记忆路线-连续更新验证报告.md",
+      "bytes": 1294,
+      "sha256": "cb3cfa8f0db0fec317235fa7a371d7ad69eb31a373d3992ce25f2f1b3777afc8"
+    },
+    {
+      "path": "docs/history/Letta安装验证-DeepSeekFlash.md",
+      "bytes": 1263,
+      "sha256": "5068bdd06ee18ed293a6698feb1fbbe3e91e821ee373a87857af0e8b5a7363b1"
+    },
+    {
+      "path": "docs/history/Letta真实数据原型-开发报告.md",
+      "bytes": 1339,
+      "sha256": "9b3bb8cba48529f6be4a67b7279a2f3d23d1e7baeb3e13f80c71ec211c087b4c"
+    },
+    {
+      "path": "docs/history/Letta验收标准.md",
+      "bytes": 1231,
+      "sha256": "8d358a57958025dd64499745137eccb9a08b1f8662e7cc89e9b698496530effc"
+    },
+    {
+      "path": "docs/history/PROGRESS.md",
+      "bytes": 6100,
+      "sha256": "583bad32dbb75cf19a2bbd82e7eb9a87b0e959bdb823d3adf5565bde349a8ed4"
+    },
+    {
+      "path": "docs/history/PROJECT_GOAL.md",
+      "bytes": 4438,
+      "sha256": "7a57af73800378662ff5e57617292744287cc1643e2e9a40a84f00829678314a"
+    },
+    {
+      "path": "docs/history/Responses统一-实现与验收-20261022.md",
+      "bytes": 1534,
+      "sha256": "cf25262d116e17daf3c3d0071d20b87b7a1ead1d71693ed7fe2258f2f574ff10"
+    },
+    {
+      "path": "docs/history/UI夹具边界.md",
+      "bytes": 941,
+      "sha256": "cbdd39e613f3df955ac617e3c4da19e5278723e10f0c33cc691219d975db7f01"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-S1计数收尾-Sol复验.md",
+      "bytes": 1113,
+      "sha256": "152b236b589bd6f1e8ed9bedaa9720c8131df22ebb1233fc0d67019ceda3779d"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-同会话连续聊天检查-Sol复核.md",
+      "bytes": 1157,
+      "sha256": "ec0aebef0c7a630ba849c4abac7746942d12bcfe6d18fa9256f434d5f81f3616"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-同会话连续聊天检查-实现.md",
+      "bytes": 1246,
+      "sha256": "ab866069422c868a1795eb424019c64f1e5b2c47c66f10c7a693f9d951d8b407"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-实时展示-验收范围.md",
+      "bytes": 1226,
+      "sha256": "93d2054f0b4c01fbcfbd0ce25c1b41c38f2bc5c5f91405903123be1ae7835e9e"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-思考工具协议接线.md",
+      "bytes": 1234,
+      "sha256": "ee9e931717557b7507bfbc384061f0b624d31973651da19e7947bfc7c81a5fed"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-接入脚本修复-Sol复验.md",
+      "bytes": 1148,
+      "sha256": "9b81b67d73bf012f3173b0d40944ee8c456a58044a49cf327c292605e2dc7da1"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-接入验收脚本-Sol复核.md",
+      "bytes": 1166,
+      "sha256": "5c152e2e5cb58ba25af471aa4ef28c19b217d669436686e8b3ead234b1b4295a"
+    },
+    {
+      "path": "docs/history/v2.6-Demo-流式与实时工具展示-Sol实现.md",
+      "bytes": 1570,
+      "sha256": "156fb9e03d69745977c035e9c923109422ec81b612b4a63fea48e14bcc437698"
+    },
+    {
+      "path": "docs/history/v2.6-Sol订阅入口-独立验收.md",
+      "bytes": 1195,
+      "sha256": "5752ad10e5d6116b84dcf34508a9d895fb062df521e95ea6b1b4c0beb420e9af"
+    },
+    {
+      "path": "docs/history/v2.6-个人历史022-记忆内容核对.md",
+      "bytes": 1294,
+      "sha256": "52c8aa3fb9d4c4947742190ab746a1487672b79d09c576dd900ee8be438403eb"
+    },
+    {
+      "path": "docs/history/v2.6-全历史初始化-六月阶段核对.md",
+      "bytes": 1246,
+      "sha256": "02d331933934ea3c811fd725b38dd70883d02bb548aa9945ef8cf0b5186072b8"
+    },
+    {
+      "path": "docs/history/v2.6-全历史初始化-阶段核对.md",
+      "bytes": 1181,
+      "sha256": "caf46e3a6071d385cbb228b948237df92b0a1ed79bece07fa523fdd47241c37a"
+    },
+    {
+      "path": "docs/history/v2.6-初始化-第22批服务拒绝记录.md",
+      "bytes": 1230,
+      "sha256": "9bd9c15a37f7c75b4d0cc6e6d88076eb0e9fba005e2ea686a62b9528a13e2aae"
+    },
+    {
+      "path": "docs/history/v2.6-引用代号传输-Sol独立复核.md",
+      "bytes": 1190,
+      "sha256": "e20ae96289503373c30691c1a4a21e24919e3ea7b74f8ca3a4bebcea3d33f59b"
+    },
+    {
+      "path": "docs/history/v2.6-引用代号传输-实现.md",
+      "bytes": 1250,
+      "sha256": "73ca96828d74c51afc65dc498e9ddbe9c3edb5f7143f38f7b39927cc3f9d5d70"
+    },
+    {
+      "path": "docs/history/v2.6-来源编号复制接线-Sol复核.md",
+      "bytes": 1170,
+      "sha256": "d77a9e001cc996d7380043f6b3a7d6296282677fc243985316ee7b4821850cbd"
+    },
+    {
+      "path": "docs/history/v2.6-流式记忆Demo-试用说明.md",
+      "bytes": 1160,
+      "sha256": "a72941403daeb0c494d92058a86005ee88a68f2d8622a5ca5adbc6fbe043ee59"
+    },
+    {
+      "path": "docs/history/v2.6-订阅Sol接入实现.md",
+      "bytes": 1228,
+      "sha256": "e6d677ed6c413ec5d214c073795f6d8255f84bdabc7478e38e59f74e2c181ecc"
+    },
+    {
+      "path": "docs/history/个人AI客户端-需求与进度.md",
+      "bytes": 3624,
+      "sha256": "80ea435a603227e348aa9e8c85ce0d3cc01bbda5ce7983fa3920d794daa65e01"
+    },
+    {
+      "path": "docs/history/个人历史初始化-小量核对.md",
+      "bytes": 1244,
+      "sha256": "ed805b6b3bdcc92c0c678bff412792cd1f735b50ee8c6d610319e9f62603e007"
+    },
+    {
+      "path": "docs/history/个人历史初始化驱动-Sol复核.md",
+      "bytes": 1172,
+      "sha256": "af0d9083722f2a702eecfc4a63d36f7a11a20d82cbdf8bb93cdc7e1b4e9f6ace"
+    },
+    {
+      "path": "docs/history/个人历史初始化驱动-修复.md",
+      "bytes": 1167,
+      "sha256": "72b4bfa95d6096ae6e0898d5a9215c41f82f6314f9e5a726d9989e2e1d2c48ee"
+    },
+    {
+      "path": "docs/history/决定回归驱动-Sol复核.md",
+      "bytes": 1134,
+      "sha256": "5a84bd62ad9cfa2e08271565ced8143bdfe5717841be5e98a1c8465d063f3b53"
+    },
+    {
+      "path": "docs/history/历史初始化工具-开发报告.md",
+      "bytes": 1277,
+      "sha256": "233186477268dd46bd37806e249ff2e855dd496f8fd439b9bc01376d4b385e9f"
+    },
+    {
+      "path": "docs/history/后台记忆Agent-开发报告.md",
+      "bytes": 1234,
+      "sha256": "fff88f4bf9c1427d16a99db15fcb5a7cc4d9801dd4a321e8a08cf2d99d0a185c"
+    },
+    {
+      "path": "docs/history/完整记忆系统回测-修复复测报告.md",
+      "bytes": 1273,
+      "sha256": "2c798a607ab175a3cf8f2726f1f7f523915b33568e0aa4e9d7767921ecba8ffb"
+    },
+    {
+      "path": "docs/history/完整记忆系统回测-候选提示词.md",
+      "bytes": 1254,
+      "sha256": "6094a32fb7756609f9cea837e0b4f8ad92100810740afaaa5e09894ac1a88931"
+    },
+    {
+      "path": "docs/history/完整记忆系统回测-报告.md",
+      "bytes": 1258,
+      "sha256": "3fe67c4dbba21f2f02370ab13e5b6a3b9cfbc039f99725a6e51d4ee1ffbf4fbb"
+    },
+    {
+      "path": "docs/history/批量评测整合-源项目审计-20261021.md",
+      "bytes": 1500,
+      "sha256": "fc733e9d296783730c102289f03166ed96634469d2bba4bc55f9c8a38d6576fb"
+    },
+    {
+      "path": "docs/history/批量评测整合-真实聊天链路-20261021.md",
+      "bytes": 1272,
+      "sha256": "35cd41b403c3565e1078e6d6f9bc07a010cfad7845df8314b2b5da4b43de0809"
+    },
+    {
+      "path": "docs/history/批量评测系统-整合说明-20261021.md",
+      "bytes": 1456,
+      "sha256": "3db13aea0e25999668069dd2943caaba2f196debdd82affecf79e64ff85592e3"
+    },
+    {
+      "path": "docs/history/持续记忆试用-v4-Sol复核.md",
+      "bytes": 1213,
+      "sha256": "5d955e2458e141ed0203977bc9fc70ad8383ddd158e3aa36a906142a4cb03e4e"
+    },
+    {
+      "path": "docs/history/持续记忆试用-真实端到端验证.md",
+      "bytes": 1109,
+      "sha256": "22e1ae2f06e109d4f05756bc8d4f192860d2a130084864f0602a4cac1010ba7b"
+    },
+    {
+      "path": "docs/history/持续记忆试用接入-Astra复核.md",
+      "bytes": 1192,
+      "sha256": "df15d7c86e374e1570da93790e67d1710004ab70a44a34648554cf29d39c386f"
+    },
+    {
+      "path": "docs/history/持续记忆试用接入-开发报告.md",
+      "bytes": 1422,
+      "sha256": "b63ff47d6a1cd067dc6bca4f2b1a032dba9168ba4919569bcb2bb812d5680fcc"
+    },
+    {
+      "path": "docs/history/新版检索接入-试用说明.md",
+      "bytes": 1150,
+      "sha256": "f31b38202bd83446c1c09dd82f4ea68a6c671fd5842d1039d86103b37ffec027"
+    },
+    {
+      "path": "docs/history/旧版本封存说明.md",
+      "bytes": 1412,
+      "sha256": "64c78a45116655d121933947ece79da87520025738de259fe3cea7eda97b5887"
+    },
+    {
+      "path": "docs/history/暴露回归驱动-Sol复核.md",
+      "bytes": 1204,
+      "sha256": "1ff1a5d837f97dfaaa52f52dd404d7a28051167a6a69ddc1c24354cf59fa5f91"
+    },
+    {
+      "path": "docs/history/模型连通性-实现与验收-20261022.md",
+      "bytes": 1321,
+      "sha256": "05a38f7c4da613f66c89daab4eeae91d5ad596b3a2508e9f41bd8fb3a6695ae1"
+    },
+    {
+      "path": "docs/history/独立记忆检索Agent-重构与验证.md",
+      "bytes": 1377,
+      "sha256": "dbb191731d3eef0de98d0190d9b8451406e0e59e00a93d87187863596829a304"
+    },
+    {
+      "path": "docs/history/真实历史记忆验收-准备.md",
+      "bytes": 1230,
+      "sha256": "9b219ace7f4b007c6fdfe21d2132b6a8762bdb4c89667de48767b43ae9776e3c"
+    },
+    {
+      "path": "docs/history/真实历史记忆验收-结果.md",
+      "bytes": 1258,
+      "sha256": "4d7bf35dad7f5d1fa18fa606f390ae2852bdef809862722e49fba671c2b33a90"
+    },
+    {
+      "path": "docs/history/简易记忆Demo-初始化范围状态.md",
+      "bytes": 1249,
+      "sha256": "3d032f493f71aac4dfc686e2c336db640a2f917998d4d8c0185347b8b73b4080"
+    },
+    {
+      "path": "docs/history/简易记忆Demo-接入脚本-Sol六项修复.md",
+      "bytes": 1259,
+      "sha256": "a34f07a0d81e4373693ab9aac060915f21ec5a833b7a51fc09169b64e2bcd626"
+    },
+    {
+      "path": "docs/history/简易记忆Demo-范围状态-Sol复核.md",
+      "bytes": 1175,
+      "sha256": "1c6a1be25eaeed8830a2b46df9ecb64f8dc0ae9b3de93032ba5f612ffcde8488"
+    },
+    {
+      "path": "docs/history/自写记忆路线-连续更新验证报告.md",
+      "bytes": 1348,
+      "sha256": "1f07954992cd4fcfd7b02ed442aa683e44a479126612047323faa952442b808a"
+    },
+    {
+      "path": "docs/history/自用demo-基础功能修正-20261022.md",
+      "bytes": 1272,
+      "sha256": "19908497a5dfde2167cc26ad82c8439564d0412a4961d0029a79cfd207a0839d"
+    },
+    {
+      "path": "docs/history/记忆回测-推荐提示词-v2.md",
+      "bytes": 1296,
+      "sha256": "4ea077a488b98c954f93953c1d42ebdbcb079fd56517582f5c27bf536827c218"
+    },
+    {
+      "path": "docs/history/记忆回测-结果与结论.md",
+      "bytes": 1276,
+      "sha256": "8b44abd1863f4ca6a9c130a94a473cecaa42a8898457b278cf92eaf822fc40d1"
+    },
+    {
+      "path": "docs/history/记忆工作台前端-使用说明-20261022.md",
+      "bytes": 1291,
+      "sha256": "9cc612d97d55a711b9e37ef5771c6c2fb4bedded32a720383679d06e72fd57d8"
+    },
+    {
+      "path": "docs/history/记忆工作台前端-实现与验收-20261022.md",
+      "bytes": 1434,
+      "sha256": "f72de8f3558795fe5f7e7075b896d8c5f1bd30d6c2dd877dd8872a93bd5d351f"
+    },
+    {
+      "path": "docs/history/记忆系统-v1-后端与接口.md",
+      "bytes": 1132,
+      "sha256": "8db3a0de037819256dd6f347efc18145006f8e31e7dc3dd546fcdc02f733d332"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v1-Astra复核.md",
+      "bytes": 1210,
+      "sha256": "f36912bd4c3851e6606eb8b4c389a6d509c77e2229ec8ce83c1031ea458c55bf"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v1-开发报告.md",
+      "bytes": 1282,
+      "sha256": "08be8158fad123940153593857bb6181cda697e15ce395be136e29d5dec7184a"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v1-本轮结果.md",
+      "bytes": 1108,
+      "sha256": "e3060b9000fdbd38a46e3573d88b0a6328e828fb09758bda057c15e8b413b867"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v1-独立验收.md",
+      "bytes": 1223,
+      "sha256": "cacf4c8db1f925bde3c8b28dba8fe293864eb3a1d563b6a4c039dac35903fa84"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2-Astra复核.md",
+      "bytes": 1180,
+      "sha256": "9f8a4a9e97ef2a98d650abf1cd44ca83ebe5cf3ab562aba12a2122952af787a4"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2-Sol结果复核.md",
+      "bytes": 1287,
+      "sha256": "a2f7b4e4041f9242d0178bf24529c5ef37d48721d005dab351b12d041fac343b"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2-开发报告.md",
+      "bytes": 1309,
+      "sha256": "677a5bb9963e594d2aa256d8521270b8f3a58eee79bb5811af7662086cab70e0"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2-独立验收.md",
+      "bytes": 1181,
+      "sha256": "3d2df976eb1617d2ab5b64dfc614847f6210cffb96891170bf68f76564bca2ed"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.2-Sol工程复核.md",
+      "bytes": 1173,
+      "sha256": "5904967213993a6c26238b008c833fb837e4e90a5bcdc4bf8766413e5f010eb6"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.3-Sol工程复核.md",
+      "bytes": 1200,
+      "sha256": "709d127a5f4e304a56cd6b50cba542d122d52e453c74380646d8d24c211ac1f0"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.4-Sol候选复核.md",
+      "bytes": 1234,
+      "sha256": "682040f5016ef0af2751ba2dab1db93642dd10b8c99b7d82667307072499e417"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.4-候选开发报告.md",
+      "bytes": 1222,
+      "sha256": "a09e46929e652b64b0547f6dac5beb33367b4e437d0c369dc02cc42e626b0f8b"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.5-Sol组合复核.md",
+      "bytes": 1169,
+      "sha256": "6a2fa42edcac5268e6ef271628e99689ecdc17a7c9d6a662093cbf2dabaa3ea0"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.5-时间候选开发报告.md",
+      "bytes": 1252,
+      "sha256": "63b6fca75ed99064a3c0beda9a4f11e5012ee5e74acf0ad21ea836e1c1406810"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.6-Sol复核.md",
+      "bytes": 1135,
+      "sha256": "de10636790599f26b6dd76e995431e4a50dd9dc86a745b955fa351313ce3bf9a"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.6-决定状态修复.md",
+      "bytes": 1228,
+      "sha256": "259ecaee6753358cda4f83b39c64a43d4572680aed609c73cb6a7cefdf5cd992"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v2.6-真实决定回归.md",
+      "bytes": 1278,
+      "sha256": "3ffb9e6fad72f3d5b7c39821407b969d0d2c3649cac5995c871589a3c945c8b4"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v3-本轮结果.md",
+      "bytes": 1205,
+      "sha256": "387a1fe0516d3b027eaa2334b1d66ddf9c71fd5c3935091c4d52dd05adea49c4"
+    },
+    {
+      "path": "docs/history/通用记忆维护-v3-独立验证准备.md",
+      "bytes": 1208,
+      "sha256": "4289ada31dfc6664d1a0f75539ee646ae84b85e2e7fa77f887de2f591e629225"
+    },
+    {
+      "path": "docs/history/通用记忆维护-暴露修复回归.md",
+      "bytes": 1165,
+      "sha256": "9130939820b416aad7d6aa752df8994e69363c60ee27d256d155e0b61edf0bf8"
+    },
+    {
+      "path": "docs/history/项目总述-架构与设计.md",
+      "bytes": 4515,
+      "sha256": "b6752bc6a5ab889debd8b02269d4ac489303a56cc2555bcb90c97effa8b04b4a"
+    },
+    {
+      "path": "docs/v1/README.md",
+      "bytes": 6412,
+      "sha256": "1c898470d1211587fd1c5fbc0a8494b31acfafd4a50b88453cd19e3dad873dc6"
+    },
+    {
+      "path": "docs/v1/chat-principles.md",
+      "bytes": 942,
+      "sha256": "a5c7a9b9e8c53d354f65e7a49ed467a73327e7aa5a376b8b257dabff4ff67253"
+    },
+    {
+      "path": "docs/v1/interfaces/openapi-existing.json",
+      "bytes": 133309,
+      "sha256": "ff6a82792540c91d015b44339e1a8e5cd70347a91d59939e80eeeada1edb2a67"
+    },
+    {
+      "path": "docs/v1/interfaces/接口说明.md",
+      "bytes": 35134,
+      "sha256": "c52e0fd984dddbb426ddc976918d6cf44e82dee4bcc2a03583ac4725462e1d58"
+    },
+    {
+      "path": "docs/v1/interfaces/摘要写入API.md",
+      "bytes": 9214,
+      "sha256": "cfb2b6e11262e6458a33e1978e702490198b8bca5b6e678f1e3b12dcd1ba0028"
+    },
+    {
+      "path": "docs/v1/retrieval/README.md",
+      "bytes": 4412,
+      "sha256": "c7477bbe521cb6e6c52d44c1245f962ee831bff0f52c386209ba57ddc93e68ae"
+    },
+    {
+      "path": "docs/v1/retrieval/prompts-and-tools.json",
+      "bytes": 8743,
+      "sha256": "9f436c2465e215c373a129f6805ad12b66c3dc62ada09ab27036aa79839d1a6e"
+    },
+    {
+      "path": "docs/v1/storage/README.md",
+      "bytes": 4578,
+      "sha256": "ad9e9e96d024473dba38db70f90b022e3066a51dbb4bcdccb70c7a12927dd43c"
+    },
+    {
+      "path": "docs/v1/storage/current-schema.sql",
+      "bytes": 2400,
+      "sha256": "637369584315f32068978e0b0fe19381981d1eadcbab718bcbb4fc2c7ccb19ae"
+    },
+    {
+      "path": "docs/v1/summary-method/BACKEND-METHOD-CONTRACT.md",
+      "bytes": 17287,
+      "sha256": "8f094171e94a7959f3861542afa7b7c5e8974580257167be358176f7cde03d8e"
+    },
+    {
+      "path": "docs/v1/summary-method/README.md",
+      "bytes": 5693,
+      "sha256": "2517094426de94fd9d879388cf3448a51713a3a90b86684bedc284e44a760406"
+    },
+    {
+      "path": "docs/v1/summary-method/prompts.json",
+      "bytes": 11528,
+      "sha256": "a72603eddca80d69e33de3a29851926ebbcef8066ce6c3f7cfa9cba992db3f95"
+    },
+    {
+      "path": "docs/v1/summary-method/supplementary-query-template.json",
+      "bytes": 553,
+      "sha256": "220c6e037e22a826b8aa003cc8c9f420c8814d81db45ad8732d8464172c2786d"
+    },
+    {
+      "path": "docs/v1/summary-method/源码映射.md",
+      "bytes": 7621,
+      "sha256": "b7084f1db2194f2815b72483ade514633cdd595c75dca1a60704d79e274309d7"
+    },
+    {
+      "path": "docs/v1/前端接入与缺口.md",
+      "bytes": 3688,
+      "sha256": "fee07dfca41306bbe38177bc2f0d37cc56badc9a640cca5663bb5cb1dde550d7"
+    },
+    {
+      "path": "docs/v1/来源与删减说明.md",
+      "bytes": 5098,
+      "sha256": "4cbcfc73674dbb35b37f2e4a31c5ec214afb608e306641373e1f54d1ee2e0256"
+    },
+    {
+      "path": "docs/资料索引.md",
+      "bytes": 18183,
+      "sha256": "c4fdaba5affc97a61bc7e8fd7424cdf161b57e47a535ff60303f7169eae9328e"
+    },
+    {
+      "path": "docs/运行与前端接入.md",
+      "bytes": 9812,
+      "sha256": "dcaf1908ca476691a8032d78e5f265e320be4642da89008e4159d4b403823dbb"
+    },
+    {
+      "path": "packaging-code-report.json",
+      "bytes": 36438,
+      "sha256": "35859e9da88fc0b7426525947532d1bd23627191384fce14662a8975beee74cf"
+    },
+    {
+      "path": "packaging-docs-report.json",
+      "bytes": 263404,
+      "sha256": "154faffbd77556b83cb8bf1800b69277a8aafb7b36e429590c5e37afc8a368c5"
+    },
+    {
+      "path": "reference/README.md",
+      "bytes": 2710,
+      "sha256": "decad1242ab721083ee310eae3b84aa040f6d93223d9c7355ae7c618384952b6"
+    },
+    {
+      "path": "reference/llmtest/index.html",
+      "bytes": 176830,
+      "sha256": "607b76f8004a26ef5250d223abf501d79091933eda2f1df4c2979f209fc0a310"
+    },
+    {
+      "path": "reference/llmtest/package.json",
+      "bytes": 389,
+      "sha256": "a1b6345ae516d90886f0ef4793fa007de30816e0f1d25d9e85bd2c2dc7e15b5a"
+    },
+    {
+      "path": "reference/llmtest/server.mjs",
+      "bytes": 35719,
+      "sha256": "d67a84965dc1b0af45b4ffbbed7c163692bd0765ae0783a46eac12555537df8f"
+    },
+    {
+      "path": "reference/llmtest/start.sh",
+      "bytes": 268,
+      "sha256": "54f2029e1fa15e57d7912bba51ab3216a84ecdb9ef313bceea3aa64df9d0ccc1"
+    },
+    {
+      "path": "reference/prompts/summary-method/agents-CONSOLIDATE_SYSTEM.txt",
+      "bytes": 1151,
+      "sha256": "0155dc70dc5c228fa9d2cd585e8f7e4604845152fb3e04f3731e10b5b4c322f8"
+    },
+    {
+      "path": "reference/prompts/summary-method/agents-DATA_GUARD.txt",
+      "bytes": 140,
+      "sha256": "9b13ac1be1c1fd0ede84cb1b6b7dcf6a5ab0a6282fc1006e943f3b0b00cf3909"
+    },
+    {
+      "path": "reference/prompts/summary-method/stable_finalize-FINAL.txt",
+      "bytes": 766,
+      "sha256": "c3027d36a14a668a5a7b1a9781016368cebb205bc13cf96f26f3f77e298df6a0"
+    },
+    {
+      "path": "reference/prompts/summary-method/stable_summarizer-FINAL.txt",
+      "bytes": 722,
+      "sha256": "135e94e7e277bb78a68e96056406724a514ee79942974e9c0bcafc3b6e452154"
+    },
+    {
+      "path": "reference/prompts/summary-method/stable_summarizer-SYSTEM.txt",
+      "bytes": 1833,
+      "sha256": "a8be4c88ed42b3be5ff561e9392507852613710293968fc3596cafc9e14ad57a"
+    },
+    {
+      "path": "reference/prompts/summary-method/stable_tools-SYSTEM.txt",
+      "bytes": 1833,
+      "sha256": "a8be4c88ed42b3be5ff561e9392507852613710293968fc3596cafc9e14ad57a"
+    },
+    {
+      "path": "reference/source-manifest.json",
+      "bytes": 30096,
+      "sha256": "d31c1d97f2636bd12d1c1321e1e9b19c096b0947e957496fcd6579ec168b7ac1"
+    },
+    {
+      "path": "reference/work/8788-stable-memory-experiment/scripts/stable_finalize.py",
+      "bytes": 6273,
+      "sha256": "e1910c2cf440a93de201281d9da25c62da526e6780b275bb7e966c01a4a43f4f"
+    },
+    {
+      "path": "reference/work/8788-stable-memory-experiment/scripts/stable_summarizer.py",
+      "bytes": 10253,
+      "sha256": "3850adfc796f63a42199fd86eef512ce12a5c01b191918e8f97c16a60e83c437"
+    },
+    {
+      "path": "reference/work/8788-stable-memory-experiment/scripts/stable_tools.py",
+      "bytes": 4026,
+      "sha256": "5a0bdad7be092cdd4527f9905e092c5293d41f09a2e99693629d0738036b50b7"
+    },
+    {
+      "path": "reference/work/8788-stable-memory-experiment/scripts/verify_assembly.py",
+      "bytes": 1971,
+      "sha256": "2a5ee3f0c676f01e5a6536b971fc50e6ae1f9deb0607f8467bf3b42eaba612ca"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/serve_trial.py",
+      "bytes": 528,
+      "sha256": "91974c761d32f81d064a41029832b56575d5e40368d74249bb1cb086d7e95932"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/__init__.py",
+      "bytes": 750,
+      "sha256": "578cf5063a123110d5cd7852a1d4e08f9886eac02991ef4ebd46559579afb71e"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/agents.py",
+      "bytes": 11421,
+      "sha256": "b3c94848d832b21cdec8ac9e9678ebc067cf6e505d08751886652dd5feb1efd3"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/api.py",
+      "bytes": 10668,
+      "sha256": "32d91210bfb783e1b8bb7859f04cd08c4de647439ca59e6af673efea88c5f0ce"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/chat.py",
+      "bytes": 15191,
+      "sha256": "aa69dfea9e3fb5d22006b38107e1a75b19a0347c0f2811ced2c26a05b3388607"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/cli.py",
+      "bytes": 14227,
+      "sha256": "7d6fec36a57885178392a85127d27c2357d46f4635e7d4ee66d09850162197b6"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/config.py",
+      "bytes": 5729,
+      "sha256": "827a1a550859aeb0bcc4535b68a8700995ec15d75445df499112b756a0d4735b"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/context.py",
+      "bytes": 8309,
+      "sha256": "07d4e4434a14d76de9bb09ec47f9f1c92e7955f097abc5abac51633ea4ba0173"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/db.py",
+      "bytes": 4569,
+      "sha256": "2024b207d70d7ca7174409c119f392caa76c61ab84a2661284d383b0bb13511c"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/deepseek.py",
+      "bytes": 6845,
+      "sha256": "dcca7e33ceca1bc5f5b6eac7a483a6e6eb6d4e2ada796ef5a726f0d0a79becce"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/ideastore.py",
+      "bytes": 5917,
+      "sha256": "f530adebdb9e1dc3f608c3f3f2b6b4a9098155b00bcd3a80c0a3710f8a47be12"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/importer.py",
+      "bytes": 10959,
+      "sha256": "b62e65cd69515fc314d0b2c8e309fde01e517edba8cec8a479d2a5730ee84910"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/letta.py",
+      "bytes": 6475,
+      "sha256": "159c37c25708acbde2c0add7e16f3efa6ea928923ebca0292a6fc1621530d66c"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/memory_agent.py",
+      "bytes": 13166,
+      "sha256": "d6a2f85429c06f9cfe5a887b42627ebad7f6576bf2ef3e92ef2d50e9bdd772f2"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/query.py",
+      "bytes": 5015,
+      "sha256": "d96636863cc8e9421989078d9d08480a4b3c389cbc1216982432de7bd86e906c"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/retrieval.py",
+      "bytes": 14418,
+      "sha256": "467c2c2686820cc50136d2ccfe3b57cc035cc275ae81f75ae0689ba28dd674eb"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/trial.html",
+      "bytes": 12433,
+      "sha256": "7aee169ca1fd46f8de06ea3c17f25f6ea043103fec8384e9e2bcd27323c9386b"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/updater.py",
+      "bytes": 7589,
+      "sha256": "f1ba2c95c252f8a4628c68399e103568f733214870d9eea52c07ebabbb3a3cfb"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/util.py",
+      "bytes": 3739,
+      "sha256": "5a33a329fa4b37c7f1020c1d868fdc2265644bb1f4cf60f8277ac7c960c81d3b"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/vendor.py",
+      "bytes": 6720,
+      "sha256": "8344f55dabd3c666d99b9ee331653043f0e17e1f2232c788ee6ae5b4b5416312"
+    },
+    {
+      "path": "reference/work/generated-memory-demo/src/lettaproto/worker.py",
+      "bytes": 11459,
+      "sha256": "6e57ad69da45516645096cf796ec66c37319422a191b4fa0e882d11566f654f1"
+    },
+    {
+      "path": "reference/work/history-bootstrap-v1/bootstrap.py",
+      "bytes": 7201,
+      "sha256": "ad854cf366f4cb4b3a323f9e41a59465cea723a8015b8cafab3e4c0ec9e48951"
+    },
+    {
+      "path": "reference/work/history-bootstrap-v1/hb_core.py",
+      "bytes": 19377,
+      "sha256": "8b50be070f2e3a650285f8bae2d1472dd3e597f98ef35b6ed8c274345f720bd6"
+    },
+    {
+      "path": "reference/work/history-bootstrap-v1/tests/test_hb.py",
+      "bytes": 16190,
+      "sha256": "1a6c7262650f1b4c15b59f6a8ef1e5f7d9ba7976fb86638bbb962b7ec533daf4"
+    },
+    {
+      "path": "reference/work/letta-native-demo/scripts/common.py",
+      "bytes": 3220,
+      "sha256": "39429b8c00e2e1cb2ca0ebd952afc643fcbf4dd594a75bee4cc8eebec94a3acf"
+    },
+    {
+      "path": "reference/work/letta-native-demo/scripts/launch.py",
+      "bytes": 838,
+      "sha256": "0ed8f11060e9105b353d7b86db1708261a2c49d351d0e64b7ece5c61c485248b"
+    },
+    {
+      "path": "reference/work/letta-native-demo/scripts/server.py",
+      "bytes": 11505,
+      "sha256": "a34c7ebf2679180a874e205cb5334260b6484ee71a1a6f997e0e2452373138ec"
+    },
+    {
+      "path": "reference/work/letta-native-demo/scripts/setup_agent.py",
+      "bytes": 2968,
+      "sha256": "a3344e6a955bf9ae9664c953b091220798af266d6dcbe81a88fb0b95680f82a6"
+    },
+    {
+      "path": "reference/work/letta-native-demo/scripts/stop.py",
+      "bytes": 590,
+      "sha256": "86777450e60dec323ea91fe61a3e8b26183984ec0d5f8a606f992b6460ed2050"
+    },
+    {
+      "path": "reference/work/letta-native-demo/ui/trial.html",
+      "bytes": 8645,
+      "sha256": "806196f4f60c600436a138e34094c3fa43ce77673508c47aa7256b3d30ed57fe"
+    },
+    {
+      "path": "reference/work/letta-prototype/run.sh",
+      "bytes": 819,
+      "sha256": "5bdaf67b0314c30dfd98b4b9463a624a030bff9f4f1eabdcb05dd19d60fb2a5c"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/__init__.py",
+      "bytes": 750,
+      "sha256": "578cf5063a123110d5cd7852a1d4e08f9886eac02991ef4ebd46559579afb71e"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/agents.py",
+      "bytes": 11025,
+      "sha256": "df94fff198bcc6c8b5ea65df4c673c933d2ef756119363c948b122b599cc89fb"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/api.py",
+      "bytes": 8888,
+      "sha256": "ecdaf2b5dc9010deb1a7394f4483cb78547f82f3d20fa78c5232b40615ce4796"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/chat.py",
+      "bytes": 13289,
+      "sha256": "666ac2e41ba272ca9cf0f5d37e28439194e3f2097b5cd33fec4797fd48dcf378"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/cli.py",
+      "bytes": 14227,
+      "sha256": "7d6fec36a57885178392a85127d27c2357d46f4635e7d4ee66d09850162197b6"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/config.py",
+      "bytes": 5216,
+      "sha256": "2140f1f27168e1d9ff317073446bef509e3ecbbd5814c656bd5db8aa8498572d"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/context.py",
+      "bytes": 5812,
+      "sha256": "10b34eb1d29ead703b97b5325ed36e7d8173f703d972bb8c25b36445fac5eee5"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/db.py",
+      "bytes": 4569,
+      "sha256": "2024b207d70d7ca7174409c119f392caa76c61ab84a2661284d383b0bb13511c"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/deepseek.py",
+      "bytes": 6845,
+      "sha256": "dcca7e33ceca1bc5f5b6eac7a483a6e6eb6d4e2ada796ef5a726f0d0a79becce"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/ideastore.py",
+      "bytes": 5917,
+      "sha256": "f530adebdb9e1dc3f608c3f3f2b6b4a9098155b00bcd3a80c0a3710f8a47be12"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/importer.py",
+      "bytes": 10959,
+      "sha256": "b62e65cd69515fc314d0b2c8e309fde01e517edba8cec8a479d2a5730ee84910"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/letta.py",
+      "bytes": 6475,
+      "sha256": "159c37c25708acbde2c0add7e16f3efa6ea928923ebca0292a6fc1621530d66c"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/memory_agent.py",
+      "bytes": 13166,
+      "sha256": "d6a2f85429c06f9cfe5a887b42627ebad7f6576bf2ef3e92ef2d50e9bdd772f2"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/query.py",
+      "bytes": 5015,
+      "sha256": "d96636863cc8e9421989078d9d08480a4b3c389cbc1216982432de7bd86e906c"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/retrieval.py",
+      "bytes": 14110,
+      "sha256": "350382dcf8d12ccdba5e83579a276484c2c4da0963a33d56057a01fa1f72f6d2"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/trial.html",
+      "bytes": 11751,
+      "sha256": "8e68c04504a432abf112e791b4f2a649b0453804a56b98451b8690d5b70de481"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/updater.py",
+      "bytes": 7589,
+      "sha256": "f1ba2c95c252f8a4628c68399e103568f733214870d9eea52c07ebabbb3a3cfb"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/util.py",
+      "bytes": 2691,
+      "sha256": "0e5c7a02f83febd146fa7b5500096eab8f84f2688a4ab4702cb6c67b5510110e"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/vendor.py",
+      "bytes": 6720,
+      "sha256": "8344f55dabd3c666d99b9ee331653043f0e17e1f2232c788ee6ae5b4b5416312"
+    },
+    {
+      "path": "reference/work/letta-prototype/src/lettaproto/worker.py",
+      "bytes": 11459,
+      "sha256": "6e57ad69da45516645096cf796ec66c37319422a191b4fa0e882d11566f654f1"
+    },
+    {
+      "path": "reference/work/memory-backtest/src/backtest.py",
+      "bytes": 21732,
+      "sha256": "82e18d917ca59a50ba2106bf3721043d39ca91b532c2e2e7dee82f86c3018a91"
+    },
+    {
+      "path": "reference/work/memory-backtest/src/make_comparison.py",
+      "bytes": 3238,
+      "sha256": "23e8d3bb3d5ec2e0624e21f76b05450d403717cb61eabf430544fc3e35746698"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/__init__.py",
+      "bytes": 214,
+      "sha256": "927d209b8c6480f89a26d998acbf279bfeb9b81ffdd74f6b10fc3f53827a104b"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/agent.py",
+      "bytes": 11347,
+      "sha256": "4f3a51a2a2ea2dd379dd17c32ee182f4ffbc66bfea3c582a89d722c8cdcbc1e6"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/cli.py",
+      "bytes": 7284,
+      "sha256": "5667994097e40163275fa83b828f3bf942eadc49de6de21ef4ec6bbe060f0ccb"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/lm.py",
+      "bytes": 2242,
+      "sha256": "c2baa5e0b51c49c9063ba5337ca4f0f96506c1275713a4cf88ac6c84c3552d24"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/mainmodel.py",
+      "bytes": 6806,
+      "sha256": "dcc04c0d0e239278ea45378846d2ec931b98468e835fa9aa1a673026c4248cc6"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/pipeline.py",
+      "bytes": 5955,
+      "sha256": "a8b5c5377dbeba51923ec11c86c486136a440e41d9600e0330a66ef85c3f1850"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/prompts.py",
+      "bytes": 5874,
+      "sha256": "3da5bef666a28276593e6f0dde225e180561c4bf4209a054772a9adaf3e9a483"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/report.py",
+      "bytes": 6329,
+      "sha256": "796c49b427a16e525106bb3d3c0f82c2c013b6962148a6f109f56fadce516d5c"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/retrieval.py",
+      "bytes": 5635,
+      "sha256": "8048187244073e6331b6c9897eab78966df898c4a662ae34bf5e91fd15fa34c0"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/settings.py",
+      "bytes": 3429,
+      "sha256": "6bc1f4a1ed68151deb2917c93098c46e4986e5b04017168af415cdceb689e093"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/smoke.py",
+      "bytes": 4640,
+      "sha256": "cc10a90611e2544c1325992c58fbdca6960e4f032b316fa5225f0aeec917e914"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/store.py",
+      "bytes": 6568,
+      "sha256": "6b87ca7e8e6ae7b2127a14f88bbc95a58463412f945221edc03b3d7ea69650c2"
+    },
+    {
+      "path": "reference/work/memory-retrieval-v2/src/memret/tools.py",
+      "bytes": 8823,
+      "sha256": "a4961ac1e8b39c9d26bfa7401c8ed3dba7297e73b1efc8caa10b8d2ab1b1a7a1"
+    },
+    {
+      "path": "reference/work/memory-route-comparison/custom/judge.py",
+      "bytes": 3328,
+      "sha256": "989c50aafd42dc82ecc1a8ba6192a3772617731730c23a22d8e0216213e92459"
+    },
+    {
+      "path": "reference/work/memory-route-comparison/custom/probe_token_budget.py",
+      "bytes": 2598,
+      "sha256": "a383279a7ed5f95e1993a7b5651c407e6303204892977097d3f9601a61997295"
+    },
+    {
+      "path": "reference/work/memory-route-comparison/custom/run_experiment.py",
+      "bytes": 9612,
+      "sha256": "bd79f4a62104e3d8eb2bd20cb438775bc147e51e220bd0436d9ef93d9beb2201"
+    },
+    {
+      "path": "reference/work/memory-system-backtest/src/sysbt.py",
+      "bytes": 25999,
+      "sha256": "0a2001564c9366114b46a1985b71a09f04883d78c830139e9ddee2346bf3a706"
+    },
+    {
+      "path": "scripts/start-local.sh",
+      "bytes": 506,
+      "sha256": "4564b2cf1f268b1eab9aac4463e8cb9c4d040b3728afeeba4a0439660d4ab70b"
+    },
+    {
+      "path": "scripts/verify-package.py",
+      "bytes": 1129,
+      "sha256": "6a6ea24965542240589f7551b34fda52648dbad17392987ddacde0c1899274df"
+    },
+    {
+      "path": "work/continuity-trial-v2/.gitignore",
+      "bytes": 93,
+      "sha256": "835a5b2445536ad38ff693da9e7a646a8c767678449553eb8cb7c8073fbd7cf3"
+    },
+    {
+      "path": "work/continuity-trial-v2/README.md",
+      "bytes": 675,
+      "sha256": "8af68e46ff5b5bc2ce2a0405a261878d088f17348ea76185b48673613c7f13c2"
+    },
+    {
+      "path": "work/continuity-trial-v2/config.json",
+      "bytes": 366,
+      "sha256": "ec53607bd77eb18fea63dabdcc76ba60f2d9d893a8078787bbd0f9cb7ef36d6f"
+    },
+    {
+      "path": "work/continuity-trial-v2/eval.py",
+      "bytes": 269,
+      "sha256": "209bd95b801ed11a71169830020a21eb5fa3fb020a5b66226eff14b685cb8be9"
+    },
+    {
+      "path": "work/continuity-trial-v2/examples/evaluation/fake_server.py",
+      "bytes": 4695,
+      "sha256": "4d18cfe1134b09c2391a431a93e72f2c4f42270073b9adc61128f67ddd78ab1a"
+    },
+    {
+      "path": "work/continuity-trial-v2/examples/evaluation/synthetic-context.txt",
+      "bytes": 142,
+      "sha256": "fd54b7bdafafdfa77f9a0ea32d4e70a1e7618f6a81734ce204e34966c741a2d0"
+    },
+    {
+      "path": "work/continuity-trial-v2/examples/evaluation/synthetic.json",
+      "bytes": 1254,
+      "sha256": "573cf23e19b718775aa95a83e6a4046bae66092706a10c6841b7cf0affb86b42"
+    },
+    {
+      "path": "work/continuity-trial-v2/import_history.py",
+      "bytes": 703,
+      "sha256": "0416af188261e59377779ce3c6111f916184e3d19079ec2d2154f88efc4ed556"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/__init__.py",
+      "bytes": 731,
+      "sha256": "4c808cfebbcfbd097b07e3c01844f7f32a522356dccceb865c73e44c75e90306"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/agents.py",
+      "bytes": 4212,
+      "sha256": "696f0ec78deed483d0750e5c134c1aa23f3c16cac00c24cb374850af703a8894"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/api.py",
+      "bytes": 21865,
+      "sha256": "47e04ce72773187efa11551beb23316452ddc433f6832c78b00260ccdb683346"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/chat.py",
+      "bytes": 18004,
+      "sha256": "2a3afac3c9f54e215d7da152112d2697265d9f43fdb56e4c90fe4c8b2cfa34dc"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/codex_credentials.py",
+      "bytes": 3606,
+      "sha256": "a5dcb0f51e28f892dfcaa8bbf16487e0cb5ea702f6fba55f9a9a40517bb74d91"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/config.py",
+      "bytes": 6423,
+      "sha256": "d0fe57d2182ec16dfc69576677289bef8c215a6d333bc76830e62e5f17211bd4"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/context.py",
+      "bytes": 6159,
+      "sha256": "8b7fbfcd3530359a4e08e29346691a02e98b0214719c45bed0085c353637f3af"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/coverage.py",
+      "bytes": 24796,
+      "sha256": "3c068b8163fbf7bf8c31740cb8a8079f61b8a2167c366bda9c6eb9dc124c26a0"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/credential_store.py",
+      "bytes": 4655,
+      "sha256": "9cd897b5e3dd9a5076cec23a95b1e209c74a8d0090362fe9e1b84706da312acb"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/db.py",
+      "bytes": 3753,
+      "sha256": "12841f84f589da53d2d3cf9cdd993c4a5c5dcd179797c55fdcb2c2b7ea29c661"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/deepseek.py",
+      "bytes": 15538,
+      "sha256": "bd9fcdd0aacf9ee7ea15459b602c2504ca72c053faf711dfb49a8ff6b3bc2299"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/evaluation.py",
+      "bytes": 45565,
+      "sha256": "c9f9e5672f3790944b927fd74de53add246ec10d69fb5eb64db7cb4e175154ec"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/events.py",
+      "bytes": 3342,
+      "sha256": "eec02322f02d94ea6201a4dbcfcd405851eb0a87ae9beb284c744248ed08042c"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/history.py",
+      "bytes": 38854,
+      "sha256": "0149ae14f56783a0dbcde038dca4ab575f244b4d3324e78e59005062d958dc1d"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/maintenance.py",
+      "bytes": 9653,
+      "sha256": "732c91e4312a6b7fb639b51b57ab94e9a9e25602cca21944f2f2bf0c96334f77"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/memory_agent.py",
+      "bytes": 15728,
+      "sha256": "e3a54f928f700552570cff1483385ca6f2c6e1bb3b49b3c9c0c88727f7bcf443"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/memory_v1.py",
+      "bytes": 24918,
+      "sha256": "5e98d018a3fa704912a05755342091a57279ee4f51cc235efd43603c91696c2a"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/memory_v1_prompts.py",
+      "bytes": 6246,
+      "sha256": "1fdc66d0de0d6d5abeb2a9f8340f24869162f5d9638a04076da17e0551392800"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/model_discovery.py",
+      "bytes": 6068,
+      "sha256": "dceb45e348d295139e21766524e4cd186af3ef87496586d5b1eb4c8b401b8833"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/model_pool.py",
+      "bytes": 12401,
+      "sha256": "63bef31c2f2b5e762fdbc549de5472f54cbd7cf1cec846d084e2e68e863873c9"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/provider_stream.py",
+      "bytes": 5552,
+      "sha256": "2be75f902d07e107e4da25f0a55664402c1f9c037c52b93a9f5d7745404fdf24"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/providers.py",
+      "bytes": 24879,
+      "sha256": "d791f3ce0c71855423dd3600d31c60e61b39e30d01be14ce5369d48646d9225e"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/queue.py",
+      "bytes": 20991,
+      "sha256": "f308e2adc1dad9d89af2b9dfeae7231bfb4a162e36b98757536e8bd791a0057d"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/retrieval.py",
+      "bytes": 14610,
+      "sha256": "5c26a4dd2b92eb04432e15112c7b2903e93cae5101b2ed7a6d4664ad27052b3a"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/sandbox_summary.py",
+      "bytes": 20948,
+      "sha256": "5f3516486862222b2387c4c328ad9008e713382300c65fad4bed03d63a340b8b"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/sandbox_summary_cli.py",
+      "bytes": 5793,
+      "sha256": "149bab33c61caaa15b8c5fc7295476aca2925d0c1a29cb7a6c524a94b27e815f"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/session_management.py",
+      "bytes": 2849,
+      "sha256": "5272ef1863ad19e0c09179ce26ad4de341ab49d2381e5924809ebdfea053dc1e"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/summary_store.py",
+      "bytes": 5932,
+      "sha256": "27c006285bc9cbcf991f970f4de2dea224fb3c4cd9e13f37106a313321ec6907"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/trial.html",
+      "bytes": 27459,
+      "sha256": "4a9f71f6e92d7bff14de9499a94b2f6d83242a7a026b794db7328a74d1ef28d3"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/util.py",
+      "bytes": 5116,
+      "sha256": "7692c2efb28312b429cd75a31e0ec90f1c6e8b9f90cb9a74d3c72de52b7c91ee"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/workbench.css",
+      "bytes": 31645,
+      "sha256": "c79f9a3da0209d777ab8713faee903ea785c9283b8011104884bbdc11580eb05"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/workbench.html",
+      "bytes": 20009,
+      "sha256": "7d64484314a6eb29b8fef9f544ecd2f4bbdce132bf116cdedb6aabb4e2fa125c"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/workbench.js",
+      "bytes": 82543,
+      "sha256": "5d3e661d18a24f0a7a2586072442afe052820ff590cd4df38de2a914d7253e54"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/workbench.py",
+      "bytes": 73265,
+      "sha256": "2a1ac9c82cedeaae7259e1d75430507f24395b1df3de6a7a7fc69bb2b8b1ca4e"
+    },
+    {
+      "path": "work/continuity-trial-v2/src/continuity/workbench_memory_v1.py",
+      "bytes": 18614,
+      "sha256": "bce8885040067d3d31d19fcd181ab1cfe4588b51dce6a5b36e4a590d323eca36"
+    },
+    {
+      "path": "work/continuity-trial-v2/start.py",
+      "bytes": 2544,
+      "sha256": "4283967361ebaa6cf4451238b2e3688c0f1e494943e55a3cd9fef6157723e552"
+    },
+    {
+      "path": "work/continuity-trial-v2/start.sh",
+      "bytes": 181,
+      "sha256": "1d0682c957c69bb3a2554cbb45a501ddb7db6adacc01569ac4a699ef441ec3b9"
+    },
+    {
+      "path": "work/continuity-trial-v2/start_workbench.py",
+      "bytes": 1609,
+      "sha256": "d383b9cf7f385a4352c04ae26106c869d499997af4057abaa73d7a18a2f62a6d"
+    },
+    {
+      "path": "work/continuity-trial-v2/start_workbench.sh",
+      "bytes": 191,
+      "sha256": "b4697a1d8aa2c6f990534db687daa8048fe553695ecb93ddf131dab7c64130a8"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/evaluation_fixture_server.py",
+      "bytes": 6851,
+      "sha256": "ee0afa610a686f4ddbacac4e8e8c684a787c324b26d1fd67d905b2064683f07e"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_codex_credentials.py",
+      "bytes": 11922,
+      "sha256": "0b0e0257bcdd35616583bfae4bd159ff51961026261570f42dc520714f01b48c"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_credential_store.py",
+      "bytes": 2739,
+      "sha256": "b48821b44ed1553e5780737efbee16813d536069853a0db9e988e8143aae15a6"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_evaluation_seams.py",
+      "bytes": 10655,
+      "sha256": "b01616efb6526137380df3f0f0a22bb94a983819369f19ce4c038d7d32e11449"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_memory_v1.py",
+      "bytes": 18625,
+      "sha256": "d51eb39fac0c2096d80f3c15678b4ada48aba9d7e5c94e8a0015cdbca1cb8a6f"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_model_pool.py",
+      "bytes": 16192,
+      "sha256": "5301c3c847743450595967acf8b819b9b9a7daed0400eb7e6a8e5190cbe6e3bf"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_packaging.py",
+      "bytes": 3279,
+      "sha256": "59bdb3001347cb3a42b3bab386d9f2aff7719e79c44e0f992120617c60ac8394"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_providers.py",
+      "bytes": 42563,
+      "sha256": "fceb5f784db622b2ad9a88adb62e7dc466fee442ddd94f8dc2dc8480f9d6e49a"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_responses_invariant.py",
+      "bytes": 5516,
+      "sha256": "5744d66fcaefa7ccb674b7ffcfe651a7599c7c4e988466a4ba213a8d0c69553e"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_sandbox_summary.py",
+      "bytes": 22377,
+      "sha256": "5084068342fe1d2d1749e4675c98ff957d68844eb09605816457c9884001ab07"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_session_management.py",
+      "bytes": 8348,
+      "sha256": "4f1b5f3767b8542272d6fd9f29de82fdd14f40cdef63ad744ad552382bd9f682"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_summary_responses_bridge.py",
+      "bytes": 18398,
+      "sha256": "c43119e97c971ba6d2787278cbea9b5a94775c939ee68e2575d386b3e6206f29"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_workbench.py",
+      "bytes": 56344,
+      "sha256": "d947e299f384e150816de7acee2636853a115416684c4b19981723f465332ec2"
+    },
+    {
+      "path": "work/continuity-trial-v2/tests/test_workbench_memory_v1.py",
+      "bytes": 27573,
+      "sha256": "96c5354ae57e8c59c03c067a8d369e31038103a02e911aae4233c86d362e9f50"
+    },
+    {
+      "path": "work/memory-maintenance-v1/README.md",
+      "bytes": 731,
+      "sha256": "f4cda9b43d52975a221a2ec438277c8f843ffba95fbd050be3483a969039ebcf"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/prompts/propose.md",
+      "bytes": 8398,
+      "sha256": "5de9fed4a7bac870b03c50ee42ad760d74359ff34a39ce2bcb2e241af49977ae"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/prompts/summarize.md",
+      "bytes": 4221,
+      "sha256": "e5537bdf1a35cc5d6a2f9f7b0b824494adbfbecaa60cfb4d1b49abae377a17e3"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/prompts/verify.md",
+      "bytes": 6810,
+      "sha256": "592f50eef8b263a34935d5ea29e653b5e63d0d700aea8fdfc99060c5db0ef9db"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/run.sh",
+      "bytes": 156,
+      "sha256": "6a5d5bdde021347b3d70748cdd2127c889fc8e10fe9890f0aa56a1726b8a40cd"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/run_update.py",
+      "bytes": 851,
+      "sha256": "782f9a64de36048dea4d56a8a49b866d0f0be8b1e595567a0a761a697d276a82"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/__init__.py",
+      "bytes": 105,
+      "sha256": "15a76c76972ef7c99f77caed7d85c3ba64a62a06b536782b76d5d8426247626f"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/cli.py",
+      "bytes": 4598,
+      "sha256": "deeedd7ffa1c8a3d4da0bbcae2f1509a98347123929ce1a2194988099bf7670b"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/engine.py",
+      "bytes": 79015,
+      "sha256": "b2edb2de2fdc64dedef407e4481e155a098646c69eb19247eeaf5b109d4ca734"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/model.py",
+      "bytes": 12096,
+      "sha256": "20b9143860168a0e9f7d5ae8ae3db8d72804a50fc4d95ba6464d342d0192e057"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/prompts.py",
+      "bytes": 699,
+      "sha256": "08b3275936d45833e4f215c50fa1dbab523533a6c82dba8008932938013163b3"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/render.py",
+      "bytes": 6552,
+      "sha256": "be786a95b6d86ff72b451b959f6528dddd4d1530fee84d5b4d1634d536521028"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/store.py",
+      "bytes": 25903,
+      "sha256": "4ea7069654c31e9b6cd56bbf5b6675f1c274004a2200c6f35816f73b9f395057"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/timeutil.py",
+      "bytes": 12298,
+      "sha256": "b3d45740e3dd6d83e144b95f987fc310aa01365f5d482c9f534b2792ba02e3a0"
+    },
+    {
+      "path": "work/memory-maintenance-v1/repair-resolve-v26/tests/test_v2_6_decided.py",
+      "bytes": 13987,
+      "sha256": "9e3b936ce3792989207cf7224ba8d9335a9e0cadf95cbc247acd9e9ae5c4ecfe"
+    },
+    {
+      "path": "work/memory-maintenance-v1/review-v2/citation_alias_wire.py",
+      "bytes": 14202,
+      "sha256": "1b812cb79250f6db511a06786ae45eff48706be6d5452d16f0c9787223106ec2"
+    },
+    {
+      "path": "work/memory-maintenance-v1/review-v2/realtime_observer.py",
+      "bytes": 3770,
+      "sha256": "75e79e8d35ff8b9db121149a18dca8e0d718f4d1f366342914c9c2b06cafe3b7"
+    },
+    {
+      "path": "work/memory-maintenance-v1/review-v2/run_update_with_citation_alias.py",
+      "bytes": 663,
+      "sha256": "e9bd131ff9419d11452802aca387beeef15a9ff0260ef0de6e12a6ac559a6329"
+    },
+    {
+      "path": "work/memory-maintenance-v1/subscription-sol/driver_guards.py",
+      "bytes": 886,
+      "sha256": "382cc6d265e020a0a96ee92246b07324b4a78939a2c394d87e43838ff742622c"
+    },
+    {
+      "path": "work/memory-maintenance-v1/vendor/lettaproto/__init__.py",
+      "bytes": 141,
+      "sha256": "2176aa01e6c38562b8afca9ef8d71e5466bcd372e4c341e02bbf2f62849d23dd"
+    },
+    {
+      "path": "work/memory-maintenance-v1/vendor/lettaproto/config.py",
+      "bytes": 5202,
+      "sha256": "fdde95127988768f8ed9839015fa1c3b4d715c6d8a9ec2e1536cdd763655d5ce"
+    },
+    {
+      "path": "work/memory-maintenance-v1/vendor/lettaproto/deepseek.py",
+      "bytes": 6845,
+      "sha256": "dcca7e33ceca1bc5f5b6eac7a483a6e6eb6d4e2ada796ef5a726f0d0a79becce"
+    },
+    {
+      "path": "work/memory-maintenance-v1/vendor/lettaproto/util.py",
+      "bytes": 2691,
+      "sha256": "0e5c7a02f83febd146fa7b5500096eab8f84f2688a4ab4702cb6c67b5510110e"
+    }
+  ],
+  "updated_on": "2026-10-25",
+  "revision": "v1-summary-writer"
+}

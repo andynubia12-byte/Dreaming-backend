@@ -1,0 +1,10 @@
+db/
+runs/
+state/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+evaluations/
+secrets/
+__pycache__/
+*.pyc

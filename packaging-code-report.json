@@ -1,0 +1,730 @@
+{
+  "scope": "continuity code and legacy maintenance dependencies only",
+  "source_read_only": true,
+  "copied_files": [
+    {
+      "source": "work/continuity-trial-v2/src/continuity/__init__.py",
+      "target": "work/continuity-trial-v2/src/continuity/__init__.py",
+      "source_sha256": "4c808cfebbcfbd097b07e3c01844f7f32a522356dccceb865c73e44c75e90306",
+      "packaged_sha256": "4c808cfebbcfbd097b07e3c01844f7f32a522356dccceb865c73e44c75e90306",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/agents.py",
+      "target": "work/continuity-trial-v2/src/continuity/agents.py",
+      "source_sha256": "696f0ec78deed483d0750e5c134c1aa23f3c16cac00c24cb374850af703a8894",
+      "packaged_sha256": "696f0ec78deed483d0750e5c134c1aa23f3c16cac00c24cb374850af703a8894",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/api.py",
+      "target": "work/continuity-trial-v2/src/continuity/api.py",
+      "source_sha256": "1a4d696122bc32cbe3bdbb890c2a5a1b818fe52dd6360a3deadb9f27a318c35d",
+      "packaged_sha256": "47e04ce72773187efa11551beb23316452ddc433f6832c78b00260ccdb683346",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/chat.py",
+      "target": "work/continuity-trial-v2/src/continuity/chat.py",
+      "source_sha256": "2a3afac3c9f54e215d7da152112d2697265d9f43fdb56e4c90fe4c8b2cfa34dc",
+      "packaged_sha256": "2a3afac3c9f54e215d7da152112d2697265d9f43fdb56e4c90fe4c8b2cfa34dc",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/codex_credentials.py",
+      "target": "work/continuity-trial-v2/src/continuity/codex_credentials.py",
+      "source_sha256": "09605127ddea60164c1c6f3cabec879352e42a6d48dccdd6e66a3ff8c9e9ce1c",
+      "packaged_sha256": "a5dcb0f51e28f892dfcaa8bbf16487e0cb5ea702f6fba55f9a9a40517bb74d91",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/config.py",
+      "target": "work/continuity-trial-v2/src/continuity/config.py",
+      "source_sha256": "32edbe6eb3aada06140e7b9f0803368a527745a3003b2c1add576970f7fb5fe7",
+      "packaged_sha256": "d0fe57d2182ec16dfc69576677289bef8c215a6d333bc76830e62e5f17211bd4",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/context.py",
+      "target": "work/continuity-trial-v2/src/continuity/context.py",
+      "source_sha256": "8b7fbfcd3530359a4e08e29346691a02e98b0214719c45bed0085c353637f3af",
+      "packaged_sha256": "8b7fbfcd3530359a4e08e29346691a02e98b0214719c45bed0085c353637f3af",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/coverage.py",
+      "target": "work/continuity-trial-v2/src/continuity/coverage.py",
+      "source_sha256": "3c068b8163fbf7bf8c31740cb8a8079f61b8a2167c366bda9c6eb9dc124c26a0",
+      "packaged_sha256": "3c068b8163fbf7bf8c31740cb8a8079f61b8a2167c366bda9c6eb9dc124c26a0",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/credential_store.py",
+      "target": "work/continuity-trial-v2/src/continuity/credential_store.py",
+      "source_sha256": "9cd897b5e3dd9a5076cec23a95b1e209c74a8d0090362fe9e1b84706da312acb",
+      "packaged_sha256": "9cd897b5e3dd9a5076cec23a95b1e209c74a8d0090362fe9e1b84706da312acb",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/db.py",
+      "target": "work/continuity-trial-v2/src/continuity/db.py",
+      "source_sha256": "12841f84f589da53d2d3cf9cdd993c4a5c5dcd179797c55fdcb2c2b7ea29c661",
+      "packaged_sha256": "12841f84f589da53d2d3cf9cdd993c4a5c5dcd179797c55fdcb2c2b7ea29c661",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/deepseek.py",
+      "target": "work/continuity-trial-v2/src/continuity/deepseek.py",
+      "source_sha256": "bd9fcdd0aacf9ee7ea15459b602c2504ca72c053faf711dfb49a8ff6b3bc2299",
+      "packaged_sha256": "bd9fcdd0aacf9ee7ea15459b602c2504ca72c053faf711dfb49a8ff6b3bc2299",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/evaluation.py",
+      "target": "work/continuity-trial-v2/src/continuity/evaluation.py",
+      "source_sha256": "c9f9e5672f3790944b927fd74de53add246ec10d69fb5eb64db7cb4e175154ec",
+      "packaged_sha256": "c9f9e5672f3790944b927fd74de53add246ec10d69fb5eb64db7cb4e175154ec",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/events.py",
+      "target": "work/continuity-trial-v2/src/continuity/events.py",
+      "source_sha256": "eec02322f02d94ea6201a4dbcfcd405851eb0a87ae9beb284c744248ed08042c",
+      "packaged_sha256": "eec02322f02d94ea6201a4dbcfcd405851eb0a87ae9beb284c744248ed08042c",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/history.py",
+      "target": "work/continuity-trial-v2/src/continuity/history.py",
+      "source_sha256": "0149ae14f56783a0dbcde038dca4ab575f244b4d3324e78e59005062d958dc1d",
+      "packaged_sha256": "0149ae14f56783a0dbcde038dca4ab575f244b4d3324e78e59005062d958dc1d",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/maintenance.py",
+      "target": "work/continuity-trial-v2/src/continuity/maintenance.py",
+      "source_sha256": "732c91e4312a6b7fb639b51b57ab94e9a9e25602cca21944f2f2bf0c96334f77",
+      "packaged_sha256": "732c91e4312a6b7fb639b51b57ab94e9a9e25602cca21944f2f2bf0c96334f77",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/memory_agent.py",
+      "target": "work/continuity-trial-v2/src/continuity/memory_agent.py",
+      "source_sha256": "e3a54f928f700552570cff1483385ca6f2c6e1bb3b49b3c9c0c88727f7bcf443",
+      "packaged_sha256": "e3a54f928f700552570cff1483385ca6f2c6e1bb3b49b3c9c0c88727f7bcf443",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/model_discovery.py",
+      "target": "work/continuity-trial-v2/src/continuity/model_discovery.py",
+      "source_sha256": "dceb45e348d295139e21766524e4cd186af3ef87496586d5b1eb4c8b401b8833",
+      "packaged_sha256": "dceb45e348d295139e21766524e4cd186af3ef87496586d5b1eb4c8b401b8833",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/model_pool.py",
+      "target": "work/continuity-trial-v2/src/continuity/model_pool.py",
+      "source_sha256": "63bef31c2f2b5e762fdbc549de5472f54cbd7cf1cec846d084e2e68e863873c9",
+      "packaged_sha256": "63bef31c2f2b5e762fdbc549de5472f54cbd7cf1cec846d084e2e68e863873c9",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/provider_stream.py",
+      "target": "work/continuity-trial-v2/src/continuity/provider_stream.py",
+      "source_sha256": "2be75f902d07e107e4da25f0a55664402c1f9c037c52b93a9f5d7745404fdf24",
+      "packaged_sha256": "2be75f902d07e107e4da25f0a55664402c1f9c037c52b93a9f5d7745404fdf24",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/providers.py",
+      "target": "work/continuity-trial-v2/src/continuity/providers.py",
+      "source_sha256": "8586ceee0d5b601c76377f69484b21377fb4b5e0454e1ee76585e440299fbfe4",
+      "packaged_sha256": "d791f3ce0c71855423dd3600d31c60e61b39e30d01be14ce5369d48646d9225e",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/queue.py",
+      "target": "work/continuity-trial-v2/src/continuity/queue.py",
+      "source_sha256": "f308e2adc1dad9d89af2b9dfeae7231bfb4a162e36b98757536e8bd791a0057d",
+      "packaged_sha256": "f308e2adc1dad9d89af2b9dfeae7231bfb4a162e36b98757536e8bd791a0057d",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/retrieval.py",
+      "target": "work/continuity-trial-v2/src/continuity/retrieval.py",
+      "source_sha256": "5c26a4dd2b92eb04432e15112c7b2903e93cae5101b2ed7a6d4664ad27052b3a",
+      "packaged_sha256": "5c26a4dd2b92eb04432e15112c7b2903e93cae5101b2ed7a6d4664ad27052b3a",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/sandbox_summary.py",
+      "target": "work/continuity-trial-v2/src/continuity/sandbox_summary.py",
+      "source_sha256": "5f3516486862222b2387c4c328ad9008e713382300c65fad4bed03d63a340b8b",
+      "packaged_sha256": "5f3516486862222b2387c4c328ad9008e713382300c65fad4bed03d63a340b8b",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/sandbox_summary_cli.py",
+      "target": "work/continuity-trial-v2/src/continuity/sandbox_summary_cli.py",
+      "source_sha256": "149bab33c61caaa15b8c5fc7295476aca2925d0c1a29cb7a6c524a94b27e815f",
+      "packaged_sha256": "149bab33c61caaa15b8c5fc7295476aca2925d0c1a29cb7a6c524a94b27e815f",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/session_management.py",
+      "target": "work/continuity-trial-v2/src/continuity/session_management.py",
+      "source_sha256": "5272ef1863ad19e0c09179ce26ad4de341ab49d2381e5924809ebdfea053dc1e",
+      "packaged_sha256": "5272ef1863ad19e0c09179ce26ad4de341ab49d2381e5924809ebdfea053dc1e",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/summary_store.py",
+      "target": "work/continuity-trial-v2/src/continuity/summary_store.py",
+      "source_sha256": "27c006285bc9cbcf991f970f4de2dea224fb3c4cd9e13f37106a313321ec6907",
+      "packaged_sha256": "27c006285bc9cbcf991f970f4de2dea224fb3c4cd9e13f37106a313321ec6907",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/trial.html",
+      "target": "work/continuity-trial-v2/src/continuity/trial.html",
+      "source_sha256": "4a9f71f6e92d7bff14de9499a94b2f6d83242a7a026b794db7328a74d1ef28d3",
+      "packaged_sha256": "4a9f71f6e92d7bff14de9499a94b2f6d83242a7a026b794db7328a74d1ef28d3",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/util.py",
+      "target": "work/continuity-trial-v2/src/continuity/util.py",
+      "source_sha256": "7692c2efb28312b429cd75a31e0ec90f1c6e8b9f90cb9a74d3c72de52b7c91ee",
+      "packaged_sha256": "7692c2efb28312b429cd75a31e0ec90f1c6e8b9f90cb9a74d3c72de52b7c91ee",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/workbench.css",
+      "target": "work/continuity-trial-v2/src/continuity/workbench.css",
+      "source_sha256": "c79f9a3da0209d777ab8713faee903ea785c9283b8011104884bbdc11580eb05",
+      "packaged_sha256": "c79f9a3da0209d777ab8713faee903ea785c9283b8011104884bbdc11580eb05",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/workbench.html",
+      "target": "work/continuity-trial-v2/src/continuity/workbench.html",
+      "source_sha256": "7d64484314a6eb29b8fef9f544ecd2f4bbdce132bf116cdedb6aabb4e2fa125c",
+      "packaged_sha256": "7d64484314a6eb29b8fef9f544ecd2f4bbdce132bf116cdedb6aabb4e2fa125c",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/workbench.js",
+      "target": "work/continuity-trial-v2/src/continuity/workbench.js",
+      "source_sha256": "5d3e661d18a24f0a7a2586072442afe052820ff590cd4df38de2a914d7253e54",
+      "packaged_sha256": "5d3e661d18a24f0a7a2586072442afe052820ff590cd4df38de2a914d7253e54",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/src/continuity/workbench.py",
+      "target": "work/continuity-trial-v2/src/continuity/workbench.py",
+      "source_sha256": "ba6f47fd40de79e4996b219da57bda8841ad5ad4bc18a82a73ec4a011b5396b7",
+      "packaged_sha256": "6f03aedb941f3b4615140cf245d19476cbd03665433c2991c9da9c7c61f89626",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/start.py",
+      "target": "work/continuity-trial-v2/start.py",
+      "source_sha256": "c21e24dc7cf47504ace8e1232d1d95dc11ca961d2a5c6a697639208f649ea891",
+      "packaged_sha256": "4283967361ebaa6cf4451238b2e3688c0f1e494943e55a3cd9fef6157723e552",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/start_workbench.py",
+      "target": "work/continuity-trial-v2/start_workbench.py",
+      "source_sha256": "955f02b3e0356f4e932f3dd5a4a82ff4a1653ee47fefb1b036fec96aeb3206e7",
+      "packaged_sha256": "d383b9cf7f385a4352c04ae26106c869d499997af4057abaa73d7a18a2f62a6d",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/import_history.py",
+      "target": "work/continuity-trial-v2/import_history.py",
+      "source_sha256": "0416af188261e59377779ce3c6111f916184e3d19079ec2d2154f88efc4ed556",
+      "packaged_sha256": "0416af188261e59377779ce3c6111f916184e3d19079ec2d2154f88efc4ed556",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/eval.py",
+      "target": "work/continuity-trial-v2/eval.py",
+      "source_sha256": "209bd95b801ed11a71169830020a21eb5fa3fb020a5b66226eff14b685cb8be9",
+      "packaged_sha256": "209bd95b801ed11a71169830020a21eb5fa3fb020a5b66226eff14b685cb8be9",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/.gitignore",
+      "target": "work/continuity-trial-v2/.gitignore",
+      "source_sha256": "1ddb2de53fb24fbe8cdb5a3d1f42c2950ce2a7f9458212bd56822021b360a3e8",
+      "packaged_sha256": "835a5b2445536ad38ff693da9e7a646a8c767678449553eb8cb7c8073fbd7cf3",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_session_management.py",
+      "target": "work/continuity-trial-v2/tests/test_session_management.py",
+      "source_sha256": "4f1b5f3767b8542272d6fd9f29de82fdd14f40cdef63ad744ad552382bd9f682",
+      "packaged_sha256": "4f1b5f3767b8542272d6fd9f29de82fdd14f40cdef63ad744ad552382bd9f682",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_model_pool.py",
+      "target": "work/continuity-trial-v2/tests/test_model_pool.py",
+      "source_sha256": "5301c3c847743450595967acf8b819b9b9a7daed0400eb7e6a8e5190cbe6e3bf",
+      "packaged_sha256": "5301c3c847743450595967acf8b819b9b9a7daed0400eb7e6a8e5190cbe6e3bf",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_responses_invariant.py",
+      "target": "work/continuity-trial-v2/tests/test_responses_invariant.py",
+      "source_sha256": "5744d66fcaefa7ccb674b7ffcfe651a7599c7c4e988466a4ba213a8d0c69553e",
+      "packaged_sha256": "5744d66fcaefa7ccb674b7ffcfe651a7599c7c4e988466a4ba213a8d0c69553e",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_workbench.py",
+      "target": "work/continuity-trial-v2/tests/test_workbench.py",
+      "source_sha256": "d947e299f384e150816de7acee2636853a115416684c4b19981723f465332ec2",
+      "packaged_sha256": "d947e299f384e150816de7acee2636853a115416684c4b19981723f465332ec2",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/evaluation_fixture_server.py",
+      "target": "work/continuity-trial-v2/tests/evaluation_fixture_server.py",
+      "source_sha256": "ee0afa610a686f4ddbacac4e8e8c684a787c324b26d1fd67d905b2064683f07e",
+      "packaged_sha256": "ee0afa610a686f4ddbacac4e8e8c684a787c324b26d1fd67d905b2064683f07e",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_sandbox_summary.py",
+      "target": "work/continuity-trial-v2/tests/test_sandbox_summary.py",
+      "source_sha256": "5084068342fe1d2d1749e4675c98ff957d68844eb09605816457c9884001ab07",
+      "packaged_sha256": "5084068342fe1d2d1749e4675c98ff957d68844eb09605816457c9884001ab07",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_summary_responses_bridge.py",
+      "target": "work/continuity-trial-v2/tests/test_summary_responses_bridge.py",
+      "source_sha256": "c43119e97c971ba6d2787278cbea9b5a94775c939ee68e2575d386b3e6206f29",
+      "packaged_sha256": "c43119e97c971ba6d2787278cbea9b5a94775c939ee68e2575d386b3e6206f29",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_credential_store.py",
+      "target": "work/continuity-trial-v2/tests/test_credential_store.py",
+      "source_sha256": "b48821b44ed1553e5780737efbee16813d536069853a0db9e988e8143aae15a6",
+      "packaged_sha256": "b48821b44ed1553e5780737efbee16813d536069853a0db9e988e8143aae15a6",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_codex_credentials.py",
+      "target": "work/continuity-trial-v2/tests/test_codex_credentials.py",
+      "source_sha256": "0e3bd8743312b6c0638755ce36cc12f00d6726c9d2be4daf8426c54a7d718748",
+      "packaged_sha256": "0b0e0257bcdd35616583bfae4bd159ff51961026261570f42dc520714f01b48c",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_providers.py",
+      "target": "work/continuity-trial-v2/tests/test_providers.py",
+      "source_sha256": "fceb5f784db622b2ad9a88adb62e7dc466fee442ddd94f8dc2dc8480f9d6e49a",
+      "packaged_sha256": "fceb5f784db622b2ad9a88adb62e7dc466fee442ddd94f8dc2dc8480f9d6e49a",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/tests/test_evaluation_seams.py",
+      "target": "work/continuity-trial-v2/tests/test_evaluation_seams.py",
+      "source_sha256": "b01616efb6526137380df3f0f0a22bb94a983819369f19ce4c038d7d32e11449",
+      "packaged_sha256": "b01616efb6526137380df3f0f0a22bb94a983819369f19ce4c038d7d32e11449",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/examples/evaluation/fake_server.py",
+      "target": "work/continuity-trial-v2/examples/evaluation/fake_server.py",
+      "source_sha256": "4d18cfe1134b09c2391a431a93e72f2c4f42270073b9adc61128f67ddd78ab1a",
+      "packaged_sha256": "4d18cfe1134b09c2391a431a93e72f2c4f42270073b9adc61128f67ddd78ab1a",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/examples/evaluation/synthetic.json",
+      "target": "work/continuity-trial-v2/examples/evaluation/synthetic.json",
+      "source_sha256": "573cf23e19b718775aa95a83e6a4046bae66092706a10c6841b7cf0affb86b42",
+      "packaged_sha256": "573cf23e19b718775aa95a83e6a4046bae66092706a10c6841b7cf0affb86b42",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/continuity-trial-v2/examples/evaluation/synthetic-context.txt",
+      "target": "work/continuity-trial-v2/examples/evaluation/synthetic-context.txt",
+      "source_sha256": "fd54b7bdafafdfa77f9a0ea32d4e70a1e7618f6a81734ce204e34966c741a2d0",
+      "packaged_sha256": "fd54b7bdafafdfa77f9a0ea32d4e70a1e7618f6a81734ce204e34966c741a2d0",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/__init__.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/__init__.py",
+      "source_sha256": "15a76c76972ef7c99f77caed7d85c3ba64a62a06b536782b76d5d8426247626f",
+      "packaged_sha256": "15a76c76972ef7c99f77caed7d85c3ba64a62a06b536782b76d5d8426247626f",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/cli.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/cli.py",
+      "source_sha256": "deeedd7ffa1c8a3d4da0bbcae2f1509a98347123929ce1a2194988099bf7670b",
+      "packaged_sha256": "deeedd7ffa1c8a3d4da0bbcae2f1509a98347123929ce1a2194988099bf7670b",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/engine.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/engine.py",
+      "source_sha256": "b2edb2de2fdc64dedef407e4481e155a098646c69eb19247eeaf5b109d4ca734",
+      "packaged_sha256": "b2edb2de2fdc64dedef407e4481e155a098646c69eb19247eeaf5b109d4ca734",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/model.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/model.py",
+      "source_sha256": "20b9143860168a0e9f7d5ae8ae3db8d72804a50fc4d95ba6464d342d0192e057",
+      "packaged_sha256": "20b9143860168a0e9f7d5ae8ae3db8d72804a50fc4d95ba6464d342d0192e057",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/prompts.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/prompts.py",
+      "source_sha256": "08b3275936d45833e4f215c50fa1dbab523533a6c82dba8008932938013163b3",
+      "packaged_sha256": "08b3275936d45833e4f215c50fa1dbab523533a6c82dba8008932938013163b3",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/render.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/render.py",
+      "source_sha256": "be786a95b6d86ff72b451b959f6528dddd4d1530fee84d5b4d1634d536521028",
+      "packaged_sha256": "be786a95b6d86ff72b451b959f6528dddd4d1530fee84d5b4d1634d536521028",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/store.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/store.py",
+      "source_sha256": "4ea7069654c31e9b6cd56bbf5b6675f1c274004a2200c6f35816f73b9f395057",
+      "packaged_sha256": "4ea7069654c31e9b6cd56bbf5b6675f1c274004a2200c6f35816f73b9f395057",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/timeutil.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/src/memmaint/timeutil.py",
+      "source_sha256": "b3d45740e3dd6d83e144b95f987fc310aa01365f5d482c9f534b2792ba02e3a0",
+      "packaged_sha256": "b3d45740e3dd6d83e144b95f987fc310aa01365f5d482c9f534b2792ba02e3a0",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/prompts/propose.md",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/prompts/propose.md",
+      "source_sha256": "5de9fed4a7bac870b03c50ee42ad760d74359ff34a39ce2bcb2e241af49977ae",
+      "packaged_sha256": "5de9fed4a7bac870b03c50ee42ad760d74359ff34a39ce2bcb2e241af49977ae",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/prompts/summarize.md",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/prompts/summarize.md",
+      "source_sha256": "e5537bdf1a35cc5d6a2f9f7b0b824494adbfbecaa60cfb4d1b49abae377a17e3",
+      "packaged_sha256": "e5537bdf1a35cc5d6a2f9f7b0b824494adbfbecaa60cfb4d1b49abae377a17e3",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/prompts/verify.md",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/prompts/verify.md",
+      "source_sha256": "592f50eef8b263a34935d5ea29e653b5e63d0d700aea8fdfc99060c5db0ef9db",
+      "packaged_sha256": "592f50eef8b263a34935d5ea29e653b5e63d0d700aea8fdfc99060c5db0ef9db",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/run_update.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/run_update.py",
+      "source_sha256": "fd3124f182fa07c6cd085b443a8d03fb3690b6c7eb08d76391ce0aafd27f86cc",
+      "packaged_sha256": "782f9a64de36048dea4d56a8a49b866d0f0be8b1e595567a0a761a697d276a82",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/memory-maintenance-v1/repair-resolve-v26/tests/test_v2_6_decided.py",
+      "target": "work/memory-maintenance-v1/repair-resolve-v26/tests/test_v2_6_decided.py",
+      "source_sha256": "9e3b936ce3792989207cf7224ba8d9335a9e0cadf95cbc247acd9e9ae5c4ecfe",
+      "packaged_sha256": "9e3b936ce3792989207cf7224ba8d9335a9e0cadf95cbc247acd9e9ae5c4ecfe",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/review-v2/run_update_with_citation_alias.py",
+      "target": "work/memory-maintenance-v1/review-v2/run_update_with_citation_alias.py",
+      "source_sha256": "763a41e3e3e4d604e5bec55c209828c5736185ea27671c3bd7f2a47c934d575e",
+      "packaged_sha256": "e9bd131ff9419d11452802aca387beeef15a9ff0260ef0de6e12a6ac559a6329",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/memory-maintenance-v1/review-v2/citation_alias_wire.py",
+      "target": "work/memory-maintenance-v1/review-v2/citation_alias_wire.py",
+      "source_sha256": "1b812cb79250f6db511a06786ae45eff48706be6d5452d16f0c9787223106ec2",
+      "packaged_sha256": "1b812cb79250f6db511a06786ae45eff48706be6d5452d16f0c9787223106ec2",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/memory-maintenance-v1/review-v2/realtime_observer.py",
+      "target": "work/memory-maintenance-v1/review-v2/realtime_observer.py",
+      "source_sha256": "75e79e8d35ff8b9db121149a18dca8e0d718f4d1f366342914c9c2b06cafe3b7",
+      "packaged_sha256": "75e79e8d35ff8b9db121149a18dca8e0d718f4d1f366342914c9c2b06cafe3b7",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/letta-prototype/src/lettaproto/__init__.py",
+      "target": "work/memory-maintenance-v1/vendor/lettaproto/__init__.py",
+      "source_sha256": "578cf5063a123110d5cd7852a1d4e08f9886eac02991ef4ebd46559579afb71e",
+      "packaged_sha256": "2176aa01e6c38562b8afca9ef8d71e5466bcd372e4c341e02bbf2f62849d23dd",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/letta-prototype/src/lettaproto/config.py",
+      "target": "work/memory-maintenance-v1/vendor/lettaproto/config.py",
+      "source_sha256": "ef43d1c742f45b370250bc3ec3e9a3ff46e3b6a06d3ccad3e716ee1e0630009d",
+      "packaged_sha256": "fdde95127988768f8ed9839015fa1c3b4d715c6d8a9ec2e1536cdd763655d5ce",
+      "modified_for_packaging": true
+    },
+    {
+      "source": "work/letta-prototype/src/lettaproto/deepseek.py",
+      "target": "work/memory-maintenance-v1/vendor/lettaproto/deepseek.py",
+      "source_sha256": "dcca7e33ceca1bc5f5b6eac7a483a6e6eb6d4e2ada796ef5a726f0d0a79becce",
+      "packaged_sha256": "dcca7e33ceca1bc5f5b6eac7a483a6e6eb6d4e2ada796ef5a726f0d0a79becce",
+      "modified_for_packaging": false
+    },
+    {
+      "source": "work/letta-prototype/src/lettaproto/util.py",
+      "target": "work/memory-maintenance-v1/vendor/lettaproto/util.py",
+      "source_sha256": "0e5c7a02f83febd146fa7b5500096eab8f84f2688a4ab4702cb6c67b5510110e",
+      "packaged_sha256": "0e5c7a02f83febd146fa7b5500096eab8f84f2688a4ab4702cb6c67b5510110e",
+      "modified_for_packaging": false
+    }
+  ],
+  "generated_dependency": "work/memory-maintenance-v1/subscription-sol/driver_guards.py",
+  "validation": {
+    "status": "passed",
+    "external_api_calls": 0,
+    "fast_service_tier": false,
+    "startup": [
+      {
+        "entry": "workbench",
+        "port": 8794,
+        "empty_sessions": true,
+        "empty_snapshots": true,
+        "empty_memory": true,
+        "assets": "HTML/JS/CSS HTTP 200"
+      },
+      {
+        "entry": "legacy-trial",
+        "port": 8794,
+        "health": true,
+        "empty_memory": true,
+        "row_counts": {
+          "messages": 0,
+          "conversations": 0,
+          "chat_log": 0,
+          "maint_queue": 0,
+          "history_imports": 0
+        },
+        "worker_started": true
+      }
+    ],
+    "default_port": 8794,
+    "services_stopped_after_smoke": true,
+    "generated_smoke_runtime_removed": true,
+    "tests": [
+      {
+        "suite": "packaging isolation + dependency CLI dry-run",
+        "passed": 3
+      },
+      {
+        "suite": "Codex credential isolation and validation",
+        "passed": 19
+      },
+      {
+        "suite": "session management",
+        "passed": 4
+      },
+      {
+        "suite": "legacy v2.6 synthetic semantics",
+        "passed": 17
+      },
+      {
+        "suite": "legacy summary CLI transport mocked before dispatch",
+        "passed": 1
+      }
+    ],
+    "total_tests_passed": 44,
+    "warning": "Original v2.6 synthetic tests emit Python 3.14 ResourceWarning about unclosed test resources; all assertions pass.",
+    "shell_syntax": "all four packaged launchers passed sh -n",
+    "fresh_workbench_session": {
+      "status": "passed",
+      "port": 8794,
+      "actions": [
+        "GET bootstrap",
+        "POST synthetic session (summary and retrieval disabled)",
+        "GET session detail",
+        "GET session memory"
+      ],
+      "model_messages_sent": 0,
+      "source_row_counts": {
+        "messages": 0,
+        "conversations": 0,
+        "chat_log": 0,
+        "maint_queue": 0,
+        "history_imports": 0
+      },
+      "runtime_removed": true
+    },
+    "full_continuity_src_file_inventory_matches_source": true,
+    "python_start_workbench_change": "fresh package launch plus first synthetic session creation passed after initializing missing baseline DB",
+    "original_port_in_use": {
+      "process": "node",
+      "pid": 32595,
+      "action": "left untouched; smoke used explicit --port 8794"
+    }
+  },
+  "unresolved": [
+    "Legacy v2.6 maintenance is retained only for existing functionality; it is not the v1 selected summary method. No new v1 summary adapter was implemented.",
+    "No integration with writes to service 8788 is claimed.",
+    "Original planned port 8792 was occupied and left untouched. Final package defaults to smoke-tested 8794.",
+    "No external model/provider connectivity, quality evaluation, or full browser interaction suite was run.",
+    "Original v2.6 synthetic tests emit ResourceWarning on Python 3.14 for test resource cleanup; assertions pass."
+  ],
+  "source_root": "/Users/andy/Documents/Codex/2026-10-11/users-andy-personaldata-2026-10-11",
+  "target_root": "/Users/andy/Projects/Dreaming-backend",
+  "modified_files": [
+    "work/continuity-trial-v2/src/continuity/api.py",
+    "work/continuity-trial-v2/src/continuity/codex_credentials.py",
+    "work/continuity-trial-v2/src/continuity/config.py",
+    "work/continuity-trial-v2/src/continuity/providers.py",
+    "work/continuity-trial-v2/src/continuity/workbench.py",
+    "work/continuity-trial-v2/start.py",
+    "work/continuity-trial-v2/start_workbench.py",
+    "work/continuity-trial-v2/.gitignore",
+    "work/continuity-trial-v2/tests/test_codex_credentials.py",
+    "work/memory-maintenance-v1/repair-resolve-v26/run_update.py",
+    "work/memory-maintenance-v1/review-v2/run_update_with_citation_alias.py",
+    "work/memory-maintenance-v1/vendor/lettaproto/__init__.py",
+    "work/memory-maintenance-v1/vendor/lettaproto/config.py"
+  ],
+  "modification_summary": [
+    "Fresh config.json resolves package-local relative paths, null history inputs, and ignores inherited legacy data-path environment fallbacks.",
+    "Maintenance default resolves to the copied v2.6 citation alias entry; all dependency search paths resolve within this package.",
+    "All launchers remove the previous external credential wrapper; HTTP entry defaults are 8792.",
+    "Subscription auth defaults to package-local secrets/codex-auth.json instead of user CODEX_HOME or ~/.codex.",
+    "Optional saved v65 text lookup is moved from historical outputs into the new workbench saved-comparisons directory, retaining the existing manual comparison feature.",
+    "Only input_metrics is extracted unchanged from driver_guards.py, eliminating an import of the historical personal batch runner.",
+    "Vendored HTTP-client config personal path defaults are replaced with local placeholders; its package exports only the included dependency modules.",
+    "Affected credential tests are adapted to package-local lookup; new offline packaging tests cover path isolation, credential-free boot and CLI dry-run.",
+    "Workbench launcher initializes a missing package-local baseline SQLite schema so the first empty-data session can create its required history snapshot; existing databases are left intact.",
+    "Final integration: default port 8794 avoids the existing 8792 listener; no original services restarted."
+  ],
+  "excluded": [
+    "Source config.json (not copied; fresh empty-data config generated)",
+    "All real db/state/runs/evaluations and SQLite sidecars",
+    "Personal summaries, raw history exports, original deployment docs and personal initialization/batch drivers",
+    "Personal-content/history recheck fixtures, real evaluation corpora, results, screenshots and execution logs",
+    "API keys, auth.json, .env, old model-pool metadata and Keychain entries",
+    "Caches, bytecode, virtual environments, node_modules and source build artifacts",
+    "Historical maintenance snapshots/repair variants not referenced by the current citation-alias entry"
+  ],
+  "dependency_audit": {
+    "python_minimum": "3.10 (syntax/API floor; not separately tested)",
+    "tested_python": "3.14.6",
+    "runtime_dependencies": "Python standard library only; bundled continuity/memmaint/lettaproto and alias/observer modules",
+    "stdlib_import_roots": [
+      "__future__",
+      "argparse",
+      "base64",
+      "collections",
+      "concurrent",
+      "contextlib",
+      "contextvars",
+      "copy",
+      "ctypes",
+      "dataclasses",
+      "datetime",
+      "functools",
+      "hashlib",
+      "html",
+      "http",
+      "importlib",
+      "inspect",
+      "io",
+      "itertools",
+      "json",
+      "math",
+      "os",
+      "pathlib",
+      "re",
+      "runpy",
+      "selectors",
+      "shutil",
+      "socket",
+      "sqlite3",
+      "stat",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "time",
+      "traceback",
+      "typing",
+      "unicodedata",
+      "unittest",
+      "urllib",
+      "uuid"
+    ],
+    "nonstdlib_import_roots": [
+      "citation_alias_wire",
+      "continuity",
+      "driver_guards",
+      "evaluation_fixture_server",
+      "lettaproto",
+      "memmaint",
+      "realtime_observer",
+      "test_providers",
+      "test_sandbox_summary"
+    ],
+    "python_files_parsed_and_compiled_in_memory": 63,
+    "runtime_modules_imported": 37,
+    "required_prompt_files": [
+      "propose.md",
+      "verify.md",
+      "summarize.md"
+    ],
+    "optional_platform_feature": "Saving new API keys uses macOS Security/CoreFoundation frameworks",
+    "no_runtime_requirement": [
+      "pip installs",
+      "Node/npm",
+      "Letta daemon",
+      "original project directories",
+      "original credential wrapper"
+    ]
+  },
+  "privacy_audit": {
+    "copy_strategy": "explicit source/fixture whitelist, no directory clone",
+    "source_hashes_unchanged": true,
+    "source_files_verified": 71,
+    "runtime_data_files_in_package": 0,
+    "symlinks": 0,
+    "hardcoded_user_paths_in_code": [],
+    "credential_signature_hits": [],
+    "limits": "Signature scan supplements the source whitelist; does not claim a general PII detector. Optional unused guard_user_letta helpers remain as source but have no runtime callers."
+  },
+  "generated_files": [
+    "work/continuity-trial-v2/start_workbench.sh",
+    "work/continuity-trial-v2/config.json",
+    "work/continuity-trial-v2/README.md",
+    "work/continuity-trial-v2/start.sh",
+    "work/continuity-trial-v2/tests/test_packaging.py",
+    "work/memory-maintenance-v1/README.md",
+    "work/memory-maintenance-v1/repair-resolve-v26/run.sh",
+    "work/memory-maintenance-v1/subscription-sol/driver_guards.py",
+    "scripts/start-local.sh",
+    "docs/运行与前端接入.md",
+    "packaging-code-report.json"
+  ],
+  "integration_note": "Main acceptance changed new package default port from occupied 8792 to smoke-tested 8794; original services untouched."
+}

@@ -1,0 +1,14 @@
+{
+  "status": "documentation_template_not_executed",
+  "exact_historical_queries_included": false,
+  "reason": "历史补检查询可能复述个人历史，未带入；下列值仅为占位，不是已验证的生成策略",
+  "queries": [
+    {
+      "query": "<本次用户已授权的待核实主题，不填入历史个人原话>",
+      "keywords": [
+        "<主题关键词>"
+      ]
+    }
+  ],
+  "historical_limit_note": "旧定稿展示limit=6但实际dispatch未带limit，默认8；保留实现差异，不据本模板声称已修复。"
+}

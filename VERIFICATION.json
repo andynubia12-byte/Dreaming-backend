@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-25",
+  "scope": "8788 v1 summary writer, HTTP/chat integration and documentation",
+  "focused_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:tests python3 -m unittest test_memory_v1 test_workbench_memory_v1",
+    "ran": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "combined_regression": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:tests python3 -m unittest test_memory_v1 test_workbench_memory_v1 test_workbench",
+    "ran": 49,
+    "passed": 48,
+    "failed": 1,
+    "failure": "test_model_pool_temporary_key_real_responses_chat_batch_and_restart expects credentials to disappear on restart; current macOS Keychain implementation deliberately persists them. Existing assertion left unchanged; this is not a fully passing suite."
+  },
+  "static_scan": {
+    "files": 287,
+    "python_files": 139,
+    "json_files": 12,
+    "issues": [],
+    "missing_links": []
+  },
+  "openapi_local_refs_resolved": 252,
+  "external_model_calls": 0,
+  "personal_history_or_summaries_imported": false,
+  "original_projects_and_demos_modified": false,
+  "limitations": [
+    "No live provider or real-history quality validation",
+    "Stable refresh is explicit, not scheduled automatically",
+    "Legacy batch summary maintenance does not support engine=v1; explicitly rejected",
+    "No new frontend, iCloud, arbitrary summary edit/rollback/cancel",
+    "One existing model-pool persistence test has obsolete expectations"
+  ],
+  "packaging_baseline": {
+    "date": "2026-10-25",
+    "scope": "Final data-free development package acceptance",
+    "pre_manifest_scan": {
+      "files": 279,
+      "python_files": 134,
+      "json_files": 10,
+      "issues": [],
+      "missing_links": []
+    },
+    "current_source_copies_verified": 71,
+    "reference_files_verified": 84,
+    "external_model_calls": 0,
+    "runtime_smoke": "See packaging-code-report.json; empty-data workbench/session and legacy API passed on 8794; temporary processes stopped and generated data removed.",
+    "default_port": 8794,
+    "original_demo_8791": "not changed or restarted",
+    "limitations": [
+      "No real provider or model-quality revalidation",
+      "8788 v1 write HTTP still not implemented",
+      "Personal datasets and summaries intentionally not included",
+      "Historical documents are engineering summaries with private examples removed"
+    ]
+  }
+}

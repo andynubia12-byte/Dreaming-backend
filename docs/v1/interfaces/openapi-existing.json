@@ -1,0 +1,4815 @@
+{
+  "openapi": "3.1.0",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "Dreaming-backend 本地聊天与 v1 摘要写入接口",
+    "version": "2026-10-25-v1-writer",
+    "description": "现有工作台与显式 summary.engine=v1 的8788方法写入接口。缺省旧请求保留旧维护行为。初始化、事件追加、稳定层刷新使用同一Responses适配器与独立摘要配置；本版本仅经过离线合成验证，不宣称真实模型语义质量。"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8794",
+      "description": "本地默认地址；运行 scripts/start-local.sh 后提供服务。"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/workbench/bootstrap": {
+      "get": {
+        "operationId": "bootstrap",
+        "summary": "加载目录、默认项、会话与批次列表",
+        "description": "同步，本地读取；不调用模型。含现有摘要全文时属于敏感响应。默认主模型/检索/摘要不等于 v1 选择。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "200": {
+            "description": "加载目录、默认项、会话与批次列表",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bootstrap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/models": {
+      "get": {
+        "operationId": "listModels",
+        "summary": "读取模型池及凭据可用状态",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "200": {
+            "description": "读取模型池及凭据可用状态",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Models"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "upsertModel",
+        "summary": "按 profile.id 新增或覆盖模型配置",
+        "description": "同步；不是单独 PUT/PATCH。可写目录与 Keychain；不验证连接、不调用模型。内置 ID 可覆盖但不能删除。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "200": {
+            "description": "按 profile.id 新增或覆盖模型配置",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedModel"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/models/{model_id}": {
+      "delete": {
+        "operationId": "deleteModel",
+        "summary": "删除非内置模型目录项",
+        "description": "同步，默认/未知模型均 400。保留旧凭据引用与已冻结会话配置。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "200": {
+            "description": "删除非内置模型目录项",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Models"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/models/test": {
+      "post": {
+        "operationId": "testModel",
+        "summary": "单次合成流式连接测试",
+        "description": "同步等待：会调用模型，使用 system Reply OK + user Hi，最多一次模型请求，timeout 缩短至不超过30秒。结果失败一般仍 HTTP200，检查 ok/category/http_status。不验证工具、JSON 或长上下文；本轮未执行。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "200": {
+            "description": "单次合成流式连接测试",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Connectivity"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/models/discover": {
+      "post": {
+        "operationId": "discoverModels",
+        "summary": "获取供应商模型列表",
+        "description": "同步，上游 GET /models（15秒超时、最多1MiB），不调用生成模型。订阅自动发现 unsupported；内层请求错误通常也是 HTTP200 + ok:false。本轮未执行。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "200": {
+            "description": "获取供应商模型列表",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Discovery"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiscoverModels"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/sessions": {
+      "post": {
+        "operationId": "createSession",
+        "summary": "创建新实验或 continue_from 会话",
+        "description": "同步完成本地隔离/快照/必要的 v2.6 初始化后返回；不在此处生成回答。显式继续沿用 workspace，不复制近期消息。创建与聊天提交均没有 Location 响应头。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "201": {
+            "description": "创建新实验或 continue_from 会话",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSession"
+              },
+              "examples": {
+                "v1ReadOnly": {
+                  "summary": "v1只读接入：8788全文 + 当前检索Agent + 禁用旧v2.6维护，本例三角色选择Sol/high，不是产品默认限制",
+                  "value": {
+                    "title": "虚构项目的v1只读会话",
+                    "model": {
+                      "id": "codex-sol-high",
+                      "model": "gpt-6.1-sol",
+                      "base_url": "https://chatgpt.com/backend-api/codex",
+                      "api_format": "responses",
+                      "auth": "codex_subscription",
+                      "parameters": {
+                        "temperature": null,
+                        "reasoning": {
+                          "effort": "high"
+                        },
+                        "max_output_tokens": 32000
+                      }
+                    },
+                    "memory": {
+                      "mode": "context",
+                      "text": "【占位：传入经8788方法生成的完整摘要。此处不是实际个人记忆。】",
+                      "enabled": true
+                    },
+                    "retrieval": {
+                      "enabled": true,
+                      "profile": {
+                        "id": "codex-sol-high",
+                        "model": "gpt-6.1-sol",
+                        "base_url": "https://chatgpt.com/backend-api/codex",
+                        "api_format": "responses",
+                        "auth": "codex_subscription",
+                        "parameters": {
+                          "temperature": null,
+                          "reasoning": {
+                            "effort": "high"
+                          },
+                          "max_output_tokens": 32000
+                        }
+                      }
+                    },
+                    "summary": {
+                      "enabled": false,
+                      "profile": {
+                        "id": "codex-sol-high",
+                        "model": "gpt-6.1-sol",
+                        "base_url": "https://chatgpt.com/backend-api/codex",
+                        "api_format": "responses",
+                        "auth": "codex_subscription",
+                        "parameters": {
+                          "temperature": null,
+                          "reasoning": {
+                            "effort": "high"
+                          },
+                          "max_output_tokens": 32000
+                        }
+                      }
+                    }
+                  }
+                },
+                "continueFrom": {
+                  "value": {
+                    "continue_from": "example-session",
+                    "title": "同实验的新会话",
+                    "summary": {
+                      "enabled": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/sessions/{session_id}": {
+      "get": {
+        "operationId": "sessionDetail",
+        "summary": "读取会话消息、记忆和请求列表",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取会话消息、记忆和请求列表",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "deleteSession",
+        "summary": "软删除会话",
+        "description": "同步，保留共享 workspace/DB/记忆/原文/run；已删除会话重复删除仍200，完全未知404；运行或维护锁冲突409。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "200": {
+            "description": "软删除会话",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletedSession"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/sessions/{session_id}/rename": {
+      "post": {
+        "operationId": "renameSession",
+        "summary": "重命名会话",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "200": {
+            "description": "重命名会话",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RenameSession"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/sessions/{session_id}/memory": {
+      "get": {
+        "operationId": "sessionMemory",
+        "summary": "读取工作区当前可见记忆",
+        "description": "不会写入8788摘要；只返回当前已选/已发布文本。memory.enabled:false 仅控制模型注入，不隐藏此预览。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取工作区当前可见记忆",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Memory"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/sessions/{session_id}/chat": {
+      "post": {
+        "operationId": "startChat",
+        "summary": "提交消息并返回异步 run",
+        "description": "同 session/request_id 与完全相同消息返回 reused:true（仍202）；换消息409。锁覆盖回答与后维护，也覆盖同workspace的续会话。提交后模型在 daemon worker 执行。无取消/超时控制字段。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "202": {
+            "description": "提交消息并返回异步 run",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatAccepted"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatInput"
+              },
+              "example": {
+                "request_id": "00000000-0000-4000-8000-000000000001",
+                "message": "虚构示例：项目代号是什么？"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/runs/{run_id}": {
+      "get": {
+        "operationId": "runDetail",
+        "summary": "读取 run 状态",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取 run 状态",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/runs/{run_id}/events": {
+      "get": {
+        "operationId": "runEvents",
+        "summary": "按磁盘序号重放并订阅 SSE",
+        "description": "实际URL仅按run；普通帧 id + data JSON，无 event 行；heartbeat为注释。cursor超前先 event:reset，data.phase=replay_gap/reset_after=0，再重放。读到run_complete关闭连接；客户端终止重连。断开订阅不会取消任务。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "按磁盘序号重放并订阅 SSE",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                },
+                "x-data-schema": {
+                  "$ref": "#/components/schemas/Event"
+                },
+                "example": "id: 5\ndata: {\"seq\":5,\"phase\":\"answer_delta\",\"root_run_id\":\"example-run\",\"run_id\":\"example-run\",\"session_id\":\"example-session\",\"request_id\":\"00000000-0000-4000-8000-000000000001\",\"data\":{\"text\":\"你好\"}}\n\n: heartbeat\n\n"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "description": "仅在 Last-Event-ID 头为空/缺省时生效。回放 seq > after。"
+          },
+          {
+            "name": "Last-Event-ID",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]+$"
+            },
+            "description": "非空时优先于 after；无效/负数400。"
+          }
+        ]
+      }
+    },
+    "/workbench/runs/{run_id}/wire": {
+      "get": {
+        "operationId": "runWire",
+        "summary": "读取 run 和脱敏 wire（两个 URL 返回相同形状）",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取 run 和脱敏 wire（两个 URL 返回相同形状）",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunWire"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/runs/{run_id}/artifacts": {
+      "get": {
+        "operationId": "runArtifacts",
+        "summary": "读取 run 和脱敏 wire（两个 URL 返回相同形状）",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取 run 和脱敏 wire（两个 URL 返回相同形状）",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunWire"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/batches/plan": {
+      "post": {
+        "operationId": "planBatch",
+        "summary": "同步生成计划、不调用模型",
+        "description": "api_calls:0；仍会写本地 suites/快照、读取材料并校验凭据存在。valid 不验证订阅认证/供应商支持；没有 plan_id，也不会供 start 直接引用。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "200": {
+            "description": "同步生成计划、不调用模型",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchPlan"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchInput"
+              },
+              "example": {
+                "suite": {
+                  "models": [
+                    {
+                      "id": "codex-sol-high",
+                      "model": "gpt-6.1-sol",
+                      "base_url": "https://chatgpt.com/backend-api/codex",
+                      "api_format": "responses",
+                      "auth": "codex_subscription",
+                      "parameters": {
+                        "temperature": null,
+                        "reasoning": {
+                          "effort": "high"
+                        },
+                        "max_output_tokens": 32000
+                      }
+                    }
+                  ],
+                  "questions": [
+                    {
+                      "id": "q1",
+                      "text": "虚构示例：只回答你好。",
+                      "checks": {
+                        "contains": [
+                          "你好"
+                        ]
+                      }
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "id": "plain",
+                      "mode": "none"
+                    }
+                  ],
+                  "repeats": 1,
+                  "concurrency": 1,
+                  "budgets": {
+                    "max_requests": 6,
+                    "trial_max_requests": 6,
+                    "max_input_tokens": 120000
+                  }
+                },
+                "summary": {
+                  "enabled": false,
+                  "profile": {
+                    "id": "codex-sol-high",
+                    "model": "gpt-6.1-sol",
+                    "base_url": "https://chatgpt.com/backend-api/codex",
+                    "api_format": "responses",
+                    "auth": "codex_subscription",
+                    "parameters": {
+                      "temperature": null,
+                      "reasoning": {
+                        "effort": "high"
+                      },
+                      "max_output_tokens": 32000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/batches": {
+      "post": {
+        "operationId": "startBatch",
+        "summary": "重新规划并异步执行批次",
+        "description": "start 重新物化 body 并取当前时间/材料；与先前 plan 不是同一冻结事务。若需一致须显式 now_epoch、固定profile/批准快照。plan.valid:false 返回400；后台模型错误看批次/案例状态。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "202": {
+            "description": "重新规划并异步执行批次",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchInput"
+              },
+              "example": {
+                "suite": {
+                  "models": [
+                    {
+                      "id": "codex-sol-high",
+                      "model": "gpt-6.1-sol",
+                      "base_url": "https://chatgpt.com/backend-api/codex",
+                      "api_format": "responses",
+                      "auth": "codex_subscription",
+                      "parameters": {
+                        "temperature": null,
+                        "reasoning": {
+                          "effort": "high"
+                        },
+                        "max_output_tokens": 32000
+                      }
+                    }
+                  ],
+                  "questions": [
+                    {
+                      "id": "q1",
+                      "text": "虚构示例：只回答你好。",
+                      "checks": {
+                        "contains": [
+                          "你好"
+                        ]
+                      }
+                    }
+                  ],
+                  "contexts": [
+                    {
+                      "id": "plain",
+                      "mode": "none"
+                    }
+                  ],
+                  "repeats": 1,
+                  "concurrency": 1,
+                  "budgets": {
+                    "max_requests": 6,
+                    "trial_max_requests": 6,
+                    "max_input_tokens": 120000
+                  }
+                },
+                "summary": {
+                  "enabled": false,
+                  "profile": {
+                    "id": "codex-sol-high",
+                    "model": "gpt-6.1-sol",
+                    "base_url": "https://chatgpt.com/backend-api/codex",
+                    "api_format": "responses",
+                    "auth": "codex_subscription",
+                    "parameters": {
+                      "temperature": null,
+                      "reasoning": {
+                        "effort": "high"
+                      },
+                      "max_output_tokens": 32000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/batches/{batch_id}": {
+      "get": {
+        "operationId": "batchDetail",
+        "summary": "读取批次、manifest和已保存结果",
+        "description": "results 为 results.jsonl 按 index 排序，运行中可为空/部分；无分页和批次SSE。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取批次、manifest和已保存结果",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchDetail"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "batch_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/batches/{batch_id}/resume": {
+      "post": {
+        "operationId": "resumeBatch",
+        "summary": "恢复原冻结输入中的未完成案例",
+        "description": "同步准备后后台续跑；不接受新材料/模型/预算。running409。已存在结果（含 failed/error）均保留，不重测；仅补无结果案例并累计中断用量。若缺物化输入/manifest等文件，可能500；输入hash等后台校验失败看batch.error。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "413": {
+            "$ref": "#/components/responses/413"
+          },
+          "415": {
+            "$ref": "#/components/responses/415"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "202": {
+            "description": "恢复原冻结输入中的未完成案例",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResumeBatch"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "batch_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/batches/{batch_id}/results/{case_id}": {
+      "get": {
+        "operationId": "batchResult",
+        "summary": "读取单案例结果和脱敏请求记录",
+        "description": "",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取单案例结果和脱敏请求记录",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResult"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "batch_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "case_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/batches/{batch_id}/report": {
+      "get": {
+        "operationId": "batchReport",
+        "summary": "读取 HTML 对比报告",
+        "description": "comparison.html 尚未存在404；报告随完成案例增量生成，存在不等于批次完成。",
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "200": {
+            "description": "读取 HTML 对比报告",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "batch_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/workbench/sessions/{session_id}/memory/v1": {
+      "get": {
+        "operationId": "getMemoryV1",
+        "summary": "读取v1完整当前版本",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "200": {
+            "description": "读取v1完整当前版本",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemoryV1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/sessions/{session_id}/memory/v1/versions": {
+      "get": {
+        "operationId": "listMemoryV1Versions",
+        "summary": "列出v1已发布版本",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "200": {
+            "description": "列出v1已发布版本",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemoryV1Versions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/sessions/{session_id}/memory/v1/versions/{version}": {
+      "get": {
+        "operationId": "getMemoryV1Version",
+        "summary": "读取历史版本（不回滚）",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "200": {
+            "description": "读取历史版本（不回滚）",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemoryV1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workbench/sessions/{session_id}/memory/v1/jobs": {
+      "post": {
+        "operationId": "submitMemoryV1Job",
+        "summary": "提交v1初始化/追加/稳定层刷新任务",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "202": {
+            "description": "提交v1初始化/追加/稳定层刷新任务",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemoryV1JobAccepted"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryV1JobInput"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Usage": {
+        "type": "object",
+        "properties": {
+          "requests": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "input_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "output_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "errors": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "requests",
+          "input_tokens",
+          "output_tokens",
+          "errors"
+        ]
+      },
+      "Reasoning": {
+        "type": "object",
+        "properties": {
+          "effort": {
+            "type": "string",
+            "enum": [
+              "none",
+              "minimal",
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "concise",
+              "detailed"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "none 是显式发送的关闭思考值；省略 effort 使用供应商默认，不等于 none。"
+      },
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "temperature": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 2
+          },
+          "top_p": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "service_tier": {
+            "type": "string",
+            "enum": [
+              "default",
+              "flex"
+            ]
+          },
+          "parallel_tool_calls": {
+            "type": "boolean"
+          },
+          "max_output_tokens": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "max_tool_calls": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "token_limit_field": {
+            "const": "max_output_tokens"
+          },
+          "reasoning": {
+            "$ref": "#/components/schemas/Reasoning"
+          },
+          "text": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "text",
+                          "json_object",
+                          "json_schema"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "type"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "verbosity": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "description": "仅 Responses 参数；禁止 Fast/priority。text.format 的其他 JSON Schema 字段由供应商解释；后端另递归拒绝参数名匹配 key|token$|secret|auth|password|header|credential（忽略大小写）。"
+      },
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$",
+            "maxLength": 80
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1,
+            "description": "非空白模型名；不校验模型是否存在。"
+          },
+          "base_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "http(s)，不含凭据/query/fragment/空白；末尾不是 /responses 时自动追加；拒绝 /chat/completions。订阅认证仅允许固定 Codex URL。",
+            "pattern": "^https?://"
+          },
+          "api_format": {
+            "const": "responses"
+          },
+          "api_key_env": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+            "description": "服务端环境变量名。Keychain 保存后返回 WORKBENCH_POOL_KEY_… 引用；不是 Key 明文。"
+          },
+          "auth": {
+            "type": "string",
+            "enum": [
+              "api_key",
+              "codex_subscription"
+            ]
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/Parameters"
+          },
+          "timeout_seconds": {
+            "type": "number",
+            "minimum": 0.001,
+            "maximum": 3600,
+            "default": 180
+          },
+          "token_limit_field": {
+            "const": "max_output_tokens"
+          }
+        },
+        "required": [
+          "id",
+          "model",
+          "base_url",
+          "api_format",
+          "parameters"
+        ],
+        "additionalProperties": false,
+        "description": "三角色均使用完整配置快照，无 credentialsref/credentials_ref 字段。省略 auth 等同 api_key；此时必须有 api_key_env。",
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "auth": {
+                  "const": "codex_subscription"
+                }
+              },
+              "required": [
+                "auth"
+              ]
+            },
+            "then": {
+              "properties": {
+                "base_url": {
+                  "enum": [
+                    "https://chatgpt.com/backend-api/codex",
+                    "https://chatgpt.com/backend-api/codex/responses"
+                  ]
+                }
+              }
+            },
+            "else": {
+              "required": [
+                "api_key_env"
+              ]
+            }
+          }
+        ]
+      },
+      "PoolProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$",
+            "maxLength": 80
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1,
+            "description": "非空白模型名；不校验模型是否存在。"
+          },
+          "base_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "http(s)，不含凭据/query/fragment/空白；末尾不是 /responses 时自动追加；拒绝 /chat/completions。订阅认证仅允许固定 Codex URL。",
+            "pattern": "^https?://"
+          },
+          "api_format": {
+            "const": "responses"
+          },
+          "api_key_env": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+            "description": "服务端环境变量名。Keychain 保存后返回 WORKBENCH_POOL_KEY_… 引用；不是 Key 明文。"
+          },
+          "auth": {
+            "type": "string",
+            "enum": [
+              "api_key",
+              "codex_subscription"
+            ]
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/Parameters"
+          },
+          "timeout_seconds": {
+            "type": "number",
+            "minimum": 0.001,
+            "maximum": 3600,
+            "default": 180
+          },
+          "token_limit_field": {
+            "const": "max_output_tokens"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "builtin": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "model",
+          "base_url",
+          "api_format",
+          "parameters"
+        ],
+        "additionalProperties": false,
+        "description": "模型目录读取视图。会话创建会移除 label/builtin；模型保存也移除 builtin。"
+      },
+      "CredentialStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "available": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "codex_subscription",
+              "keychain",
+              "environment"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "available",
+          "kind"
+        ]
+      },
+      "Migration": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "main",
+              "retrieval",
+              "summary"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "const": "responses"
+          },
+          "scope": {
+            "const": "runtime_copy"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "scope"
+        ]
+      },
+      "Models": {
+        "type": "object",
+        "properties": {
+          "profiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PoolProfile"
+            }
+          },
+          "credential_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CredentialStatus"
+            }
+          },
+          "protocol_migrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Migration"
+            }
+          }
+        },
+        "required": [
+          "profiles",
+          "credential_status",
+          "protocol_migrations"
+        ]
+      },
+      "SaveModel": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/PoolProfile"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "api_key": {
+            "type": "string",
+            "writeOnly": true,
+            "description": "可选，保存到本机 Keychain；不返回明文。订阅配置禁止提交。应只在显式凭据录入时使用。"
+          }
+        },
+        "required": [
+          "profile"
+        ],
+        "additionalProperties": false
+      },
+      "SavedModel": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/PoolProfile"
+          },
+          "credential_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CredentialStatus"
+            }
+          }
+        },
+        "required": [
+          "profile",
+          "credential_status"
+        ]
+      },
+      "TestModel": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "model_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "model_id"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "profile": {
+                "$ref": "#/components/schemas/PoolProfile"
+              },
+              "api_key": {
+                "type": "string",
+                "writeOnly": true
+              }
+            },
+            "required": [
+              "profile"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "Connectivity": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "success",
+              "auth",
+              "model",
+              "not_found",
+              "parameter",
+              "rate_limit",
+              "upstream",
+              "network",
+              "incomplete",
+              "protocol"
+            ]
+          },
+          "http_status": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "protocol_outcome": {
+            "type": "string"
+          },
+          "finish_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "param": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          },
+          "incomplete_details": {},
+          "message": {
+            "type": "string"
+          },
+          "response_sample": {
+            "type": "string"
+          },
+          "test_id": {
+            "type": "string"
+          },
+          "profile_fingerprint": {
+            "type": "string"
+          },
+          "elapsed_seconds": {
+            "type": "number"
+          },
+          "request_count": {
+            "type": "integer"
+          },
+          "artifacts": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ok",
+          "category",
+          "http_status",
+          "model",
+          "url",
+          "protocol_outcome",
+          "finish_reason",
+          "error",
+          "incomplete_details",
+          "message",
+          "response_sample",
+          "test_id",
+          "profile_fingerprint",
+          "elapsed_seconds",
+          "request_count",
+          "artifacts"
+        ]
+      },
+      "DiscoverModels": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "model_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "model_id"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "base_url": {
+                "type": "string"
+              },
+              "auth": {
+                "type": "string",
+                "enum": [
+                  "api_key",
+                  "codex_subscription"
+                ]
+              },
+              "api_key_env": {
+                "type": "string"
+              },
+              "api_key": {
+                "type": "string",
+                "writeOnly": true
+              }
+            },
+            "required": [
+              "base_url"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "Discovery": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "models": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          },
+          "http_status": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "error": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "enum": [
+                      "unsupported",
+                      "auth",
+                      "http_error",
+                      "invalid_response",
+                      "invalid_request",
+                      "network"
+                    ]
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "code",
+                  "message"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "elapsed_seconds": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ok",
+          "models",
+          "http_status",
+          "url",
+          "error",
+          "message",
+          "elapsed_seconds"
+        ]
+      },
+      "MemoryInput": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "none",
+              "context",
+              "snapshot"
+            ]
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "description": "批准的 memory ID；省略通常取 current。与 text 不可同时非 null。"
+          },
+          "text": {
+            "type": "string",
+            "description": "仅 context 可提供自定义完整摘要；无自动裁剪。"
+          }
+        },
+        "required": [
+          "mode"
+        ],
+        "additionalProperties": false,
+        "description": "none 禁止 id/text；context 使用 text 或批准的 id；snapshot 只接受带原文历史快照的批准 ID。"
+      },
+      "RetrievalInput": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/PoolProfile"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false,
+        "description": "省略整个 retrieval 等同 enabled:false；未指定 profile 时使用当前池内检索默认项，v1应显式选定检索profile，开发子Agent的Sol/high约定不限制产品角色。开启仅允许主模型调用检索，不保证每轮必调。"
+      },
+      "RetrievalResolved": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/Profile"
+          }
+        },
+        "required": [
+          "enabled",
+          "profile"
+        ]
+      },
+      "SummaryInput": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "string",
+            "description": "可用池 ID/实际模型名选择；同时传 profile 时必须等于 profile.model。"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/PoolProfile"
+          },
+          "max_requests": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 30
+          },
+          "max_output_tokens": {
+            "type": "integer",
+            "minimum": 16000,
+            "maximum": 64000,
+            "default": 64000,
+            "description": "v1允许16000..64000；旧v2.6必须64000。有效输出仍受profile中的更低cap限制(低于16k的v1 profile会失败)。"
+          },
+          "engine": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2.6"
+            ],
+            "description": "显式v1使用8788方法；缺省旧请求使用旧维护。共享workspace不可更换引擎。",
+            "default": "v2.6"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "additionalProperties": false,
+        "description": "v1须显式engine=v1且新workspace使用memory.mode=none。enabled仅控制聊天后自动事件追加；false仍可显式提交job并读取已发布版本。配置/profile仍解析，max_requests为摘要独立累计预算，无Fast。旧批量维护不支持v1。",
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "engine": {
+                  "const": "v1"
+                }
+              },
+              "required": [
+                "engine"
+              ]
+            },
+            "else": {
+              "properties": {
+                "max_output_tokens": {
+                  "const": 64000
+                }
+              }
+            }
+          }
+        ]
+      },
+      "SummaryOverride": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "string",
+            "description": "可用池 ID/实际模型名选择；同时传 profile 时必须等于 profile.model。"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/PoolProfile"
+          },
+          "max_requests": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 30
+          },
+          "max_output_tokens": {
+            "type": "integer",
+            "minimum": 16000,
+            "maximum": 64000,
+            "default": 64000,
+            "description": "v1允许16000..64000；旧v2.6必须64000。有效输出仍受profile中的更低cap限制(低于16k的v1 profile会失败)。"
+          },
+          "engine": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2.6"
+            ],
+            "description": "显式v1使用8788方法；缺省旧请求使用旧维护。共享workspace不可更换引擎。"
+          }
+        },
+        "additionalProperties": false,
+        "description": "continue_from 时与上一会话 summary 合并，实际只允许 enabled 改变，其余改变返回 409。"
+      },
+      "SummaryResolved": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "string",
+            "description": "可用池 ID/实际模型名选择；同时传 profile 时必须等于 profile.model。"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/Profile"
+          },
+          "max_requests": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 30
+          },
+          "max_output_tokens": {
+            "type": "integer",
+            "minimum": 16000,
+            "maximum": 64000,
+            "default": 64000,
+            "description": "v1允许16000..64000；旧v2.6必须64000。有效输出仍受profile中的更低cap限制(低于16k的v1 profile会失败)。"
+          },
+          "engine": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2.6"
+            ],
+            "description": "显式v1使用8788方法；缺省旧请求使用旧维护。共享workspace不可更换引擎。",
+            "default": "v2.6"
+          }
+        },
+        "required": [
+          "enabled",
+          "model",
+          "profile",
+          "max_requests",
+          "max_output_tokens",
+          "engine"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "engine": {
+                  "const": "v1"
+                }
+              },
+              "required": [
+                "engine"
+              ]
+            },
+            "else": {
+              "properties": {
+                "max_output_tokens": {
+                  "const": 64000
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CreateSession": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "model": {
+                "$ref": "#/components/schemas/PoolProfile"
+              },
+              "memory": {
+                "$ref": "#/components/schemas/MemoryInput"
+              },
+              "retrieval": {
+                "$ref": "#/components/schemas/RetrievalInput"
+              },
+              "summary": {
+                "$ref": "#/components/schemas/SummaryInput"
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 300,
+                "default": "新会话"
+              }
+            },
+            "required": [
+              "model",
+              "memory"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "continue_from": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+                "maxLength": 128
+              },
+              "model": {
+                "$ref": "#/components/schemas/PoolProfile"
+              },
+              "memory": {
+                "$ref": "#/components/schemas/MemoryInput"
+              },
+              "retrieval": {
+                "$ref": "#/components/schemas/RetrievalInput"
+              },
+              "summary": {
+                "$ref": "#/components/schemas/SummaryOverride"
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 300,
+                "default": "新会话"
+              }
+            },
+            "required": [
+              "continue_from"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "新实验独立复制原文历史。continue_from 新建会话但共享 workspace、数据库、记忆与累计账本，仅近期对话按新 session ID 隔离。没有独立 continue HTTP URL。 显式v1 workspace从memory.mode=none开始；通过memory/v1/jobs生成两层记忆，不能把旧seed混入。"
+      },
+      "Session": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "workspace_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "title": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "number"
+          },
+          "model": {
+            "$ref": "#/components/schemas/Profile"
+          },
+          "memory": {
+            "$ref": "#/components/schemas/MemoryInput"
+          },
+          "retrieval": {
+            "$ref": "#/components/schemas/RetrievalResolved"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SummaryResolved"
+          },
+          "history_snapshot_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "memory_strategy": {
+            "type": "string"
+          },
+          "continue_from": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "protocol_migrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Migration"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "workspace_id",
+          "title",
+          "created_at",
+          "model",
+          "memory",
+          "retrieval",
+          "summary",
+          "history_snapshot_id",
+          "memory_strategy"
+        ],
+        "description": "public_session 去除 initial/config；包含传入 memory.text 时仍会返回完整文本。重命名可能返回历史保存视图，迁移信息不保证出现。"
+      },
+      "SessionEnvelope": {
+        "type": "object",
+        "properties": {
+          "session": {
+            "$ref": "#/components/schemas/Session"
+          }
+        },
+        "required": [
+          "session"
+        ]
+      },
+      "Memory": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "chars": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "now_max": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "text",
+          "version",
+          "present",
+          "chars",
+          "published_at",
+          "now_max"
+        ]
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "role": {
+            "type": "string",
+            "description": "当前聊天路径写 user/assistant；此接口不接收可指定 role 的消息数组。"
+          },
+          "content": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "content",
+          "created_at"
+        ]
+      },
+      "Run": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "session_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "message_sha256": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "accepted",
+              "completed",
+              "failed",
+              "interrupted"
+            ]
+          },
+          "created_at": {
+            "type": "number"
+          },
+          "finished_at": {
+            "type": "number"
+          },
+          "kind": {
+            "type": "string",
+            "description": "记忆任务与聊天run区分字段。"
+          },
+          "result": {
+            "type": "object",
+            "description": "记忆任务终态结果；可能含完整生成记忆。"
+          },
+          "error": {
+            "type": "string"
+          },
+          "error_type": {
+            "type": "string"
+          },
+          "workspace_id": {
+            "type": "string"
+          },
+          "operation_id": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "initialize",
+              "append",
+              "refresh_stable"
+            ]
+          },
+          "request_sha256": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "object"
+          },
+          "recovered": {
+            "type": "boolean"
+          },
+          "summary_warnings": {
+            "type": "array",
+            "description": "摘要结果确定后的附加记录异常，不改变真实发布结果。",
+            "items": {
+              "type": "object",
+              "properties": {
+                "stage": {
+                  "type": "string"
+                },
+                "error_type": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "run_id",
+          "session_id",
+          "request_id",
+          "status",
+          "created_at"
+        ],
+        "description": "聊天run保留message_sha256；记忆任务保留操作与输入摘要/结果，具体可选字段见run实际返回。"
+      },
+      "SessionDetail": {
+        "type": "object",
+        "properties": {
+          "session": {
+            "$ref": "#/components/schemas/Session"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            }
+          },
+          "memory": {
+            "$ref": "#/components/schemas/Memory"
+          },
+          "runs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Run"
+            }
+          }
+        },
+        "required": [
+          "session",
+          "messages",
+          "memory",
+          "runs"
+        ]
+      },
+      "ChatInput": {
+        "type": "object",
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "同 session 内 UUID 幂等键；规范化 UUID 后比较。相同消息重用旧 run；不同消息 409。"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "description": "须非纯空白；消息原文用于哈希与保存，不自动 trim。"
+          }
+        },
+        "required": [
+          "request_id",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "ChatAccepted": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "run": {
+            "$ref": "#/components/schemas/Run"
+          },
+          "reused": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "run_id",
+          "run",
+          "reused"
+        ]
+      },
+      "ChatResult": {
+        "type": "object",
+        "properties": {
+          "conversation_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "user_message_id": {
+            "type": "string"
+          },
+          "assistant_message_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "tool_trace": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "tool_rounds": {
+            "type": "integer"
+          },
+          "now": {
+            "type": "string"
+          },
+          "agent_version": {
+            "type": "string"
+          },
+          "context_stats": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "memory": {
+            "type": "object",
+            "properties": {
+              "present": {
+                "type": "boolean"
+              },
+              "version": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "present",
+              "version"
+            ]
+          },
+          "maintenance": {
+            "type": "null",
+            "description": "此工作台传 maintenance=None；v2.6 维护由 worker 在 answer_complete 后单独执行。"
+          },
+          "api_usage_total": {
+            "$ref": "#/components/schemas/Usage"
+          }
+        },
+        "required": [
+          "conversation_id",
+          "user_message_id",
+          "assistant_message_id",
+          "answer",
+          "tool_trace",
+          "tool_rounds",
+          "now",
+          "agent_version",
+          "context_stats",
+          "memory",
+          "maintenance",
+          "api_usage_total"
+        ]
+      },
+      "WireEvent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "main",
+              "retrieval",
+              "summary"
+            ]
+          },
+          "model": {
+            "type": "string"
+          },
+          "api_format": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "request": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "request_body_sha256": {
+            "type": "string"
+          },
+          "dispatch_attempted": {
+            "type": "boolean"
+          },
+          "response_received": {
+            "type": "boolean"
+          },
+          "request_sent": {
+            "type": "boolean"
+          },
+          "sent_unknown": {
+            "type": "boolean"
+          },
+          "response": {},
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "usage": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "elapsed_seconds": {
+            "type": "number"
+          },
+          "http_status": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "error": {},
+          "redactions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "record_changed": {
+            "type": "boolean"
+          },
+          "replay_limited": {
+            "type": "boolean"
+          }
+        },
+        "description": "供应商记录为开放 schema；可能含完整上下文与证据。明文 reasoning/凭据脱敏，标记过的记录不等于可逐字重放。无请求 headers。"
+      },
+      "RunEnvelope": {
+        "type": "object",
+        "properties": {
+          "run": {
+            "$ref": "#/components/schemas/Run"
+          }
+        },
+        "required": [
+          "run"
+        ]
+      },
+      "RunWire": {
+        "type": "object",
+        "properties": {
+          "run": {
+            "$ref": "#/components/schemas/Run"
+          },
+          "wire_events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WireEvent"
+            }
+          }
+        },
+        "required": [
+          "run",
+          "wire_events"
+        ]
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "time": {
+            "type": "number"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "root_run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "session_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parent_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tool_call_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "task_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "channel": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "seq",
+          "phase",
+          "root_run_id",
+          "run_id",
+          "session_id",
+          "request_id",
+          "data"
+        ],
+        "description": "普通帧无 event: 行，以 phase 分流。子 observer 的 run_id 不等于 URL 中的 root_run_id。restart run_complete/reset 可能无 time/channel/parent_id 等字段。",
+        "x-phase-data": {
+          "request_accepted": {
+            "type": "object",
+            "properties": {}
+          },
+          "context_loading": {
+            "type": "object",
+            "properties": {}
+          },
+          "context_loaded": {
+            "type": "object",
+            "properties": {
+              "stats": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "memory_version": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "stats",
+              "memory_version"
+            ]
+          },
+          "model_started": {
+            "type": "object",
+            "properties": {
+              "model": {
+                "type": "string"
+              },
+              "recovery": {
+                "type": "boolean"
+              },
+              "tools_enabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "model",
+              "recovery",
+              "tools_enabled"
+            ]
+          },
+          "model_thinking": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "thinking"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "answer_delta": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "text"
+            ]
+          },
+          "draft_reset": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          },
+          "model_finished": {
+            "type": "object",
+            "properties": {
+              "finish_reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "usage": {},
+              "usage_missing": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "finish_reason",
+              "usage",
+              "usage_missing"
+            ]
+          },
+          "tool_call": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "arguments_json": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "arguments",
+              "arguments_json"
+            ]
+          },
+          "retrieval_model_started": {
+            "type": "object",
+            "properties": {
+              "model": {
+                "type": "string"
+              },
+              "turn": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "model",
+              "turn"
+            ]
+          },
+          "retrieval_tool_call": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "arguments_json": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "arguments",
+              "arguments_json"
+            ]
+          },
+          "retrieval_tool_result": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "result": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "name",
+              "result"
+            ]
+          },
+          "retrieval_synthesis_started": {
+            "type": "object",
+            "properties": {
+              "model": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "model"
+            ]
+          },
+          "retrieval_handoff": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string",
+                "description": "JSON 字符串，包含 status/findings/evidence/gaps 等；解析前先保留其字符串形式。"
+              },
+              "bounds": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "name",
+              "content",
+              "bounds"
+            ]
+          },
+          "pro_resuming": {
+            "type": "object",
+            "properties": {
+              "tool_call_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "tool_call_id"
+            ]
+          },
+          "provider_call": {
+            "$ref": "#/components/schemas/WireEvent"
+          },
+          "answer_committed": {
+            "type": "object",
+            "properties": {
+              "assistant_message_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "assistant_message_id"
+            ]
+          },
+          "answer_complete": {
+            "type": "object",
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "result": {
+                "$ref": "#/components/schemas/ChatResult"
+              }
+            },
+            "required": [
+              "answer",
+              "result"
+            ]
+          },
+          "maintenance_started": {
+            "type": "object",
+            "properties": {}
+          },
+          "maintenance_published": {
+            "type": "object",
+            "properties": {
+              "memory": {
+                "$ref": "#/components/schemas/Memory"
+              },
+              "result": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "memory",
+              "result"
+            ]
+          },
+          "maintenance_failed": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string"
+              },
+              "result": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "error"
+            ]
+          },
+          "request_failed": {
+            "type": "object",
+            "properties": {
+              "error_type": {
+                "type": "string"
+              },
+              "error": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "error_type",
+              "error"
+            ]
+          },
+          "run_complete": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "completed",
+                  "failed",
+                  "interrupted"
+                ]
+              },
+              "answer_saved": {
+                "type": "boolean"
+              },
+              "error": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "replay_gap": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "const": "cursor_ahead"
+              },
+              "reset_after": {
+                "const": 0
+              }
+            },
+            "required": [
+              "reason",
+              "reset_after"
+            ]
+          }
+        }
+      },
+      "SeedRow": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          },
+          "content": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "role",
+          "content",
+          "created_at"
+        ],
+        "additionalProperties": false
+      },
+      "RecentSeed": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SeedRow"
+            }
+          },
+          {
+            "const": "snapshot"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "instance": {
+                "type": "string",
+                "minLength": 1
+              },
+              "conversation_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "limit": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 40
+              }
+            },
+            "required": [
+              "instance",
+              "conversation_id"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "数组须时间递增，全部 created_at < now_epoch；snapshot/selector 仅 snapshot/pipeline 材料可用，按副本读取批准历史。"
+      },
+      "Question": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$",
+            "maxLength": 80
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checks": {
+            "type": "object",
+            "properties": {
+              "contains": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "not_contains": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "BatchContext": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$",
+                "maxLength": 80
+              },
+              "mode": {
+                "const": "none"
+              }
+            },
+            "required": [
+              "id",
+              "mode"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$",
+                "maxLength": 80
+              },
+              "mode": {
+                "const": "context"
+              },
+              "memory_id": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "recent_seed": {
+                "$ref": "#/components/schemas/RecentSeed"
+              },
+              "inject_memory": {
+                "type": "boolean",
+                "default": true
+              }
+            },
+            "required": [
+              "id",
+              "mode"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$",
+                "maxLength": 80
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "snapshot",
+                  "pipeline"
+                ]
+              },
+              "memory_id": {
+                "type": "string"
+              },
+              "recent_seed": {
+                "$ref": "#/components/schemas/RecentSeed"
+              },
+              "inject_memory": {
+                "type": "boolean",
+                "default": true
+              }
+            },
+            "required": [
+              "id",
+              "mode"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "HTTP 仅 memory_id/text，不接受 evaluation 内部 file/snapshot 路径。context 的 memory_id/text 二选一，省略均为 current；snapshot/pipeline 必须批准的历史快照来源。"
+      },
+      "Budget": {
+        "type": "object",
+        "properties": {
+          "max_requests": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trial_max_requests": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "max_input_tokens": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "max_requests",
+          "trial_max_requests",
+          "max_input_tokens"
+        ],
+        "additionalProperties": false
+      },
+      "Suite": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "const": 1,
+            "default": 1
+          },
+          "models": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PoolProfile"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "contexts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BatchContext"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "repeats": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 1
+          },
+          "concurrency": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16,
+            "default": 1
+          },
+          "budgets": {
+            "$ref": "#/components/schemas/Budget"
+          },
+          "now_epoch": {
+            "type": "number",
+            "minimum": 0
+          },
+          "retrieval_profile": {
+            "$ref": "#/components/schemas/PoolProfile"
+          },
+          "recent_seed": {
+            "$ref": "#/components/schemas/RecentSeed"
+          },
+          "chat": {
+            "type": "object",
+            "properties": {
+              "recent_limit": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "recent_token_budget": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "models",
+          "questions",
+          "contexts",
+          "budgets"
+        ],
+        "additionalProperties": false,
+        "description": "模型/问题/材料组内 ID 唯一，各组 1–100 项，笛卡尔积含 repeats 最多 10000。且仅当至少一个 pipeline 时必须且才可有 retrieval_profile。now_epoch 省略时每次 plan/start 各自取当前时间。"
+      },
+      "BatchInput": {
+        "type": "object",
+        "properties": {
+          "suite": {
+            "$ref": "#/components/schemas/Suite"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SummaryInput"
+          },
+          "previous_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "suite"
+        ],
+        "additionalProperties": false,
+        "description": "plan/start 同一个 body 形状。previous_id 要求旧批次已有 results.json（可能是部分报告），不强制 status=completed。"
+      },
+      "CaseIdentity": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "minimum": 1
+          }
+        ],
+        "items": false,
+        "minItems": 4,
+        "maxItems": 4,
+        "description": "[model_id, question_id, context_id, repeat]"
+      },
+      "PlanCase": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "identity": {
+            "$ref": "#/components/schemas/CaseIdentity"
+          }
+        },
+        "required": [
+          "case_id",
+          "identity"
+        ]
+      },
+      "SummaryPlan": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "string",
+            "description": "可用池 ID/实际模型名选择；同时传 profile 时必须等于 profile.model。"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/Profile"
+          },
+          "max_requests": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000,
+            "default": 30
+          },
+          "max_output_tokens": {
+            "type": "integer",
+            "const": 64000,
+            "default": 64000
+          },
+          "additional_to_chat_budget": {
+            "const": true
+          },
+          "budget_scope": {
+            "const": "cumulative_per_trial_workspace"
+          },
+          "batch_request_ceiling": {
+            "type": "integer"
+          },
+          "memory_strategy": {
+            "type": "string"
+          },
+          "seed_mode": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "enabled",
+          "model",
+          "profile",
+          "max_requests",
+          "max_output_tokens",
+          "additional_to_chat_budget",
+          "budget_scope",
+          "batch_request_ceiling",
+          "memory_strategy",
+          "seed_mode"
+        ]
+      },
+      "BatchPlan": {
+        "type": "object",
+        "properties": {
+          "valid": {
+            "type": "boolean"
+          },
+          "missing_credentials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "profile": {
+                  "type": "string"
+                },
+                "api_key_env": {
+                  "type": "string"
+                },
+                "base_url": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "profile",
+                "api_key_env",
+                "base_url"
+              ]
+            }
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanCase"
+            }
+          },
+          "concurrency": {
+            "type": "integer"
+          },
+          "now_epoch": {
+            "type": "number"
+          },
+          "per_trial_request_ceiling": {
+            "type": "integer"
+          },
+          "runtime_auth_unchecked": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "api_calls": {
+            "const": 0
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SummaryPlan"
+          },
+          "context_modes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "context",
+                    "snapshot",
+                    "pipeline"
+                  ]
+                },
+                "inject_memory": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "mode",
+                "inject_memory"
+              ]
+            }
+          },
+          "batch_request_ceiling": {
+            "type": "integer"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "valid",
+          "missing_credentials",
+          "cases",
+          "concurrency",
+          "now_epoch",
+          "per_trial_request_ceiling",
+          "runtime_auth_unchecked",
+          "api_calls",
+          "summary",
+          "context_modes",
+          "batch_request_ceiling",
+          "warnings"
+        ]
+      },
+      "Batch": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "accepted",
+              "completed",
+              "failed",
+              "interrupted"
+            ]
+          },
+          "created_at": {
+            "type": "number"
+          },
+          "plan": {
+            "$ref": "#/components/schemas/BatchPlan"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SummaryResolved"
+          },
+          "previous_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "finished_at": {
+            "type": "number"
+          },
+          "resumed_at": {
+            "type": "number"
+          },
+          "runtime_concurrency": {
+            "type": "integer"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "message"
+            ]
+          },
+          "protocol_migrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Migration"
+            }
+          },
+          "runtime_profiles": {
+            "type": "object",
+            "properties": {
+              "main": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Profile"
+                }
+              },
+              "retrieval": {
+                "$ref": "#/components/schemas/Profile"
+              },
+              "summary": {
+                "$ref": "#/components/schemas/Profile"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "created_at",
+          "plan",
+          "summary",
+          "previous_id"
+        ]
+      },
+      "BatchEnvelope": {
+        "type": "object",
+        "properties": {
+          "batch": {
+            "$ref": "#/components/schemas/Batch"
+          }
+        },
+        "required": [
+          "batch"
+        ]
+      },
+      "TrialResult": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer"
+          },
+          "case_id": {
+            "type": "string"
+          },
+          "identity": {
+            "$ref": "#/components/schemas/CaseIdentity"
+          },
+          "repeat": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "passed",
+              "failed",
+              "error"
+            ]
+          },
+          "answer": {
+            "type": "string"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "contains",
+                    "not_contains"
+                  ]
+                },
+                "literal": {
+                  "type": "string"
+                },
+                "passed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "kind",
+                "literal",
+                "passed"
+              ]
+            }
+          },
+          "tool_trace": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "usage": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "error": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "message"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "wire": {
+            "type": "string"
+          },
+          "context_mode": {
+            "type": "string",
+            "enum": [
+              "none",
+              "context",
+              "snapshot",
+              "pipeline"
+            ]
+          },
+          "context_injection_enabled": {
+            "type": "boolean"
+          },
+          "context_sha256": {
+            "type": "string"
+          },
+          "snapshot_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/Profile"
+          },
+          "fixed_now_epoch": {
+            "type": "number"
+          },
+          "recent": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "elapsed_seconds": {
+            "type": "number"
+          },
+          "chat": {
+            "$ref": "#/components/schemas/ChatResult"
+          },
+          "summary": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "prior_attempt_usage": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "index",
+          "case_id",
+          "identity",
+          "repeat",
+          "status",
+          "answer",
+          "checks",
+          "tool_trace",
+          "usage",
+          "error",
+          "wire",
+          "context_mode",
+          "context_injection_enabled",
+          "context_sha256",
+          "snapshot_sha256",
+          "parameters",
+          "fixed_now_epoch",
+          "recent",
+          "elapsed_seconds"
+        ],
+        "description": "passed/failed 只表示字面检查；error 表示案例执行错误。chat/summary 仅在相应路径成功到达时存在。"
+      },
+      "Manifest": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "const": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "complete",
+              "interrupted"
+            ]
+          },
+          "inputs": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "code_sha256": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "fixed_now_epoch": {
+            "type": "number"
+          },
+          "suite_sha256": {
+            "type": "string"
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanCase"
+            }
+          },
+          "budgets": {
+            "$ref": "#/components/schemas/Budget"
+          },
+          "chat_options": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "note": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "integer"
+          },
+          "resume_history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        },
+        "required": [
+          "version",
+          "status",
+          "inputs",
+          "code_sha256",
+          "fixed_now_epoch",
+          "suite_sha256",
+          "cases",
+          "budgets",
+          "chat_options",
+          "note"
+        ],
+        "description": "底层 manifest 完成状态拼写 complete；外层 batch 对应 completed。note 为旧引擎固定说明文字，不应以它推断 summary.enabled。"
+      },
+      "BatchDetail": {
+        "type": "object",
+        "properties": {
+          "batch": {
+            "$ref": "#/components/schemas/Batch"
+          },
+          "manifest": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Manifest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrialResult"
+            }
+          }
+        },
+        "required": [
+          "batch",
+          "manifest",
+          "results"
+        ]
+      },
+      "BatchResult": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/TrialResult"
+          },
+          "wire_events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WireEvent"
+            }
+          },
+          "summary": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "result",
+          "wire_events",
+          "summary"
+        ]
+      },
+      "MemoryChoice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "source_kind": {
+            "type": "string",
+            "enum": [
+              "published",
+              "saved_comparison",
+              "snapshot"
+            ]
+          },
+          "version": {
+            "type": "integer"
+          },
+          "chars": {
+            "type": "integer"
+          },
+          "text": {
+            "type": "string"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "now_max": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "source_kind",
+          "version",
+          "chars"
+        ],
+        "description": "bootstrap 可带当前/旧对比摘要全文；不要公开转发。current/v65/snapshot 是现有材料目录标签，不表示 v1 方法。"
+      },
+      "Bootstrap": {
+        "type": "object",
+        "properties": {
+          "profiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PoolProfile"
+            }
+          },
+          "credential_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CredentialStatus"
+            }
+          },
+          "protocol_migrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Migration"
+            }
+          },
+          "memories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MemoryChoice"
+            }
+          },
+          "snapshots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MemoryChoice"
+            }
+          },
+          "defaults": {
+            "type": "object",
+            "properties": {
+              "memory_id": {
+                "type": "string"
+              },
+              "model_id": {
+                "type": "string"
+              },
+              "retrieval_profile": {
+                "$ref": "#/components/schemas/PoolProfile"
+              },
+              "summary_profile": {
+                "$ref": "#/components/schemas/SummaryResolved"
+              }
+            },
+            "required": [
+              "memory_id",
+              "model_id",
+              "retrieval_profile",
+              "summary_profile"
+            ]
+          },
+          "sessions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+                  "maxLength": 128
+                },
+                "workspace_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+                  "maxLength": 128
+                },
+                "title": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "created_at"
+              ]
+            }
+          },
+          "batches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+                  "maxLength": 128
+                },
+                "status": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "number"
+                },
+                "finished_at": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "id",
+                "status",
+                "created_at"
+              ]
+            }
+          },
+          "server_time": {
+            "type": "number"
+          },
+          "capabilities": {
+            "type": "object",
+            "properties": {
+              "chat": {
+                "type": "boolean"
+              },
+              "batch": {
+                "type": "boolean"
+              },
+              "replay": {
+                "type": "boolean"
+              },
+              "independent_agents": {
+                "type": "boolean"
+              },
+              "custom_profiles": {
+                "type": "boolean"
+              },
+              "model_availability": {
+                "const": "unknown"
+              },
+              "batch_summary": {
+                "type": "boolean"
+              },
+              "max_concurrency": {
+                "const": 16
+              },
+              "api_format": {
+                "const": "responses"
+              },
+              "canonical_input": {
+                "type": "boolean"
+              },
+              "summary": {
+                "type": "object",
+                "properties": {
+                  "api_format": {
+                    "const": "responses"
+                  },
+                  "model_pool": {
+                    "type": "boolean"
+                  },
+                  "budget_scope": {
+                    "const": "cumulative_per_workspace"
+                  },
+                  "additional_to_chat_budget": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "subscription_auth": {
+                "const": "unchecked_until_explicit_run"
+              }
+            }
+          }
+        },
+        "required": [
+          "profiles",
+          "credential_status",
+          "protocol_migrations",
+          "memories",
+          "snapshots",
+          "defaults",
+          "sessions",
+          "batches",
+          "server_time",
+          "capabilities"
+        ]
+      },
+      "DeletedSession": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "const": true
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "deleted": {
+            "const": true
+          }
+        },
+        "required": [
+          "ok",
+          "id",
+          "deleted"
+        ]
+      },
+      "RenameSession": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false,
+        "description": "服务端 strip 后须1–300字符，拒绝 Cc/Cs/Zl/Zp 字符；创建时标题限制较宽，仅字符串和长度≤300。"
+      },
+      "ResumeBatch": {
+        "type": "object",
+        "properties": {
+          "concurrency": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16
+          }
+        },
+        "required": [
+          "concurrency"
+        ],
+        "additionalProperties": false
+      },
+      "MemoryV1Batch": {
+        "type": "object",
+        "required": [
+          "now",
+          "source_ids"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "now": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "该workspace内的user原文ID：msg:conversation#node 或 chat#id；不能传事实正文或数据库路径。"
+          }
+        }
+      },
+      "MemoryV1": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "event_text": {
+            "type": "string"
+          },
+          "stable_text": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "present": {
+            "type": "boolean"
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "now_max": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "两层引用来源的去重并集；不是所有已读/已处理消息覆盖清单。"
+          },
+          "operation_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "event_source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "stable_source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "event_text",
+          "stable_text",
+          "text",
+          "present"
+        ],
+        "description": "同一个原子版本的完整两层与注入全文；版本0表示未发布。其他来源/操作元数据按实际记录返回。"
+      },
+      "MemoryV1Versions": {
+        "type": "object",
+        "required": [
+          "versions"
+        ],
+        "properties": {
+          "versions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MemoryV1"
+            }
+          }
+        },
+        "description": "按版本号升序返回完整版本，包含尚未发布的版本0。"
+      },
+      "MemoryV1JobInput": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "request_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "operation": {
+                "const": "initialize"
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "now": {
+                "type": "string",
+                "format": "date-time",
+                "description": "带时区，不得在未来；省略时受理阶段固定一次。"
+              },
+              "batches": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/components/schemas/MemoryV1Batch"
+                }
+              }
+            },
+            "required": [
+              "request_id",
+              "operation",
+              "expected_version",
+              "batches"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "request_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "operation": {
+                "const": "append"
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "now": {
+                "type": "string",
+                "format": "date-time",
+                "description": "带时区，不得在未来；省略时受理阶段固定一次。"
+              },
+              "source_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "该workspace内的user原文ID：msg:conversation#node 或 chat#id；不能传事实正文或数据库路径。"
+              }
+            },
+            "required": [
+              "request_id",
+              "operation",
+              "expected_version",
+              "source_ids"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "request_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "operation": {
+                "const": "refresh_stable"
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "now": {
+                "type": "string",
+                "format": "date-time",
+                "description": "带时区，不得在未来；省略时受理阶段固定一次。"
+              }
+            },
+            "required": [
+              "request_id",
+              "operation",
+              "expected_version"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "initialize仅version0；批次时间递增且不晚于now，来源早于相应批次。append只处理新增用户来源。refresh_stable自主检索并替换稳定层，保留事件层。所有发布按expected_version提交冲突检查。"
+      },
+      "MemoryV1JobAccepted": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+            "maxLength": 128
+          },
+          "run": {
+            "$ref": "#/components/schemas/Run"
+          },
+          "reused": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "run_id",
+          "run",
+          "reused"
+        ]
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "字段、JSON、标识、profile或业务参数无效（包括默认模型禁止删除）。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Host/Origin/Sec-Fetch-Site 不通过本机同源检查。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "会话/run/批次/结果/报告或路由不存在。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "409": {
+        "description": "运行锁冲突、request_id消息冲突、材料变化或禁止覆盖配置。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "413": {
+        "description": "POST Content-Length为空/非正或超过32MiB。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "415": {
+        "description": "POST Content-Type不是application/json。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "本地未归类操作失败；详情仅为安全错误文案。",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-implementation-status": "implemented",
+  "x-loopback-policy": {
+    "bearer_auth": false,
+    "cookies_required": false,
+    "host": "127.0.0.1:{actual-port}, localhost:{actual-port}, [::1]:{actual-port}",
+    "origin": "If present, must equal http:// + Host exactly; missing Origin accepted.",
+    "sec-fetch-site": "cross-site rejected; no CORS/OPTIONS support.",
+    "post-body": "Content-Type application/json; Content-Length 1..33554432 bytes; Transfer-Encoding rejected; duplicate keys and NaN/Infinity rejected."
+  },
+  "x-source-root": "work/continuity-trial-v2（源项目相对路径；非在线服务路径）",
+  "x-archival-scope": "筛选后的新开发文档副本；删除原源码哈希/验证绑定；只描述既有HTTP，不含尚未实现的8788初始化/增量写入/稳定层刷新接口。",
+  "x-packaging": {
+    "copied_runtime_data": false,
+    "original_validation_artifacts_copied": false,
+    "runtime_verified": false,
+    "existing_status_refers_to": "源工作台已有路由，不表示独立v1服务已部署",
+    "source_document": "outputs/releases/memory-v1-20261023/interfaces/openapi-existing.json"
+  }
+}

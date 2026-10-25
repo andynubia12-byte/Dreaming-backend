@@ -1,0 +1,14 @@
+{
+  "name": "llm-desk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "本地 LLM 对话工作台：Codex 订阅（无上下文）+ DeepSeek 官方 API + Responses 格式，支持多文件有序上下文注入与历史存储",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs --open",
+    "serve": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

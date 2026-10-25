@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "fake-a",
+      "model": "synthetic-a",
+      "base_url": "http://127.0.0.1:18765",
+      "api_format": "responses",
+      "api_key_env": "EVALUATION_FAKE_KEY",
+      "parameters": {
+        "reasoning": {
+          "effort": "none"
+        }
+      },
+      "timeout_seconds": 5
+    },
+    {
+      "id": "fake-b",
+      "model": "synthetic-b",
+      "base_url": "http://127.0.0.1:18765",
+      "api_format": "responses",
+      "api_key_env": "EVALUATION_FAKE_KEY",
+      "parameters": {
+        "reasoning": {
+          "effort": "none"
+        }
+      },
+      "timeout_seconds": 5
+    }
+  ],
+  "questions": [
+    {
+      "id": "mechanics",
+      "text": "Return the synthetic fixture answer.",
+      "checks": {
+        "contains": [
+          "Synthetic"
+        ],
+        "not_contains": [
+          "private-memory-quality"
+        ]
+      }
+    }
+  ],
+  "contexts": [
+    {
+      "id": "empty",
+      "mode": "none"
+    },
+    {
+      "id": "explicit",
+      "mode": "context",
+      "file": "synthetic-context.txt"
+    }
+  ],
+  "repeats": 2,
+  "concurrency": 2,
+  "now_epoch": 1800000000,
+  "budgets": {
+    "max_requests": 10,
+    "trial_max_requests": 20,
+    "max_input_tokens": 1000000
+  }
+}

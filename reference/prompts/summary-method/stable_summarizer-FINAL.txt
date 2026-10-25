@@ -1,0 +1,14 @@
+停止调用工具。只根据工具返回过的证据，输出 JSON：
+{
+  "stable_layer_markdown": "<完整的稳定记忆层 Markdown 文本，含 A/B/C 三节>",
+  "sources": [
+    {"claim": "<一句结论>", "section": "A|B|C", "source_ids": ["<source_id>", ...],
+     "message_at": "<ISO 或 null>", "status": "current|then|uncertain"}
+  ],
+  "unknowns": ["<确实找不到、但很有用的信息>"],
+  "notes": "<一行说明，例如检索范围与主要局限>"
+}
+规则：
+- 每条 claim 必须至少有一个真实出现在工具结果里的 source_id，否则不要写进 sources。
+- 拿不准的写成 uncertain 或放进 unknowns，不要猜。
+- stable_layer_markdown 里逐节标注来源 id 或日期。
